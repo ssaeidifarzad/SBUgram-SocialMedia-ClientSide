@@ -1,14 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="View.SignUp"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="645.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SignUpController">
+   <children>
+      <ImageView fx:id="ProfilePhoto" fitHeight="90.0" fitWidth="90.0" layoutX="165.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/user.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="FirstNameField" layoutX="135.0" layoutY="213.0" promptText="First Name" />
+      <TextField fx:id="LastNameField" layoutX="134.0" layoutY="258.0" promptText="Last name" />
+      <TextField fx:id="BirthDateField" layoutX="135.0" layoutY="349.0" promptText="Birth date : YYYY/MM/DD" />
+      <TextField fx:id="UsernameField" layoutX="135.0" layoutY="399.0" promptText="Username" />
+      <PasswordField fx:id="PasswordField" layoutX="135.0" layoutY="447.0" promptText="Password (at least 8 characters and numbers)" />
+      <Button fx:id="PhotoUploadButton" layoutX="165.0" layoutY="165.0" mnemonicParsing="false" onAction="#uploadPhoto" style="-fx-background-color: #bbbbbb;" text="Upload photo">
+         <font>
+            <Font name="Century" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="WrongDateFormatLabel" layoutX="155.0" layoutY="375.0" text="Wrong date format" textFill="RED" visible="false">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="UsernameUnavailableLabel" layoutX="137.0" layoutY="425.0" text="Username is not available" textFill="RED" visible="false">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="WrongPasswordLabel" layoutX="140.0" layoutY="473.0" text="Wrong password format" textFill="RED" visible="false">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="SignUpButton" layoutX="169.0" layoutY="506.0" mnemonicParsing="false" onAction="#signup" prefHeight="37.0" prefWidth="79.0" style="-fx-background-color: #bbbbbb;" text="Sign up">
+         <font>
+            <Font name="Century" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="LoginPageLoadButton" layoutX="135.0" layoutY="580.0" mnemonicParsing="false" onAction="#loadLoginPage" prefHeight="23.0" prefWidth="150.0" style="-fx-background-color: #bbbbbb;" text="Back to login page">
+         <font>
+            <Font name="Century" size="12.0" />
+         </font>
+      </Button>
+      <Text fill="WHITE" layoutX="115.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?">
+         <font>
+            <Font name="Century" size="16.0" />
+         </font>
+      </Text>
+      <MenuButton fx:id="genderMenuButton" layoutX="134.0" layoutY="302.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Gender">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#setGenderMale" text="Male" />
+          <MenuItem mnemonicParsing="false" onAction="#setGenderFemale" text="Female" />
+            <MenuItem mnemonicParsing="false" onAction="#setGenderOther" text="Other" />
+        </items>
+      </MenuButton>
+   </children>
 </AnchorPane>

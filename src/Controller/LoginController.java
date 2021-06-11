@@ -39,4 +39,11 @@ public class LoginController {
         }
     }
 
+    public void loadSignupPage(ActionEvent actionEvent) {
+        try {
+            new PageLoader().load("SignUp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

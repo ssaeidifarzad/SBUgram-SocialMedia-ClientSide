@@ -11,8 +11,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
-   <Button fx:id="loginButton" layoutX="155.0" layoutY="436.0" mnemonicParsing="false" onAction="#login" prefHeight="35.0" prefWidth="110.0" text="Login">
+<Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+   <Button fx:id="loginButton" layoutX="155.0" layoutY="436.0" mnemonicParsing="false" onAction="#login" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #bbbbbb;" text="Login">
       <font>
          <Font name="Century" size="15.0" />
       </font></Button>
@@ -27,7 +27,7 @@
       <font>
          <Font name="Bell MT" size="13.0" />
       </font></CheckBox>
-   <Button fx:id="signupButton" layoutX="155.0" layoutY="483.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Sign up">
+   <Button fx:id="signupButton" layoutX="155.0" layoutY="483.0" mnemonicParsing="false" onAction="#loadSignupPage" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #bbbbbb;" text="Sign up">
       <font>
          <Font name="Century" size="15.0" />
       </font></Button>

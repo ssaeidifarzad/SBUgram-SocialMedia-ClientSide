@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="View.Menu"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="645.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
+   <children>
+      <ImageView fx:id="loginPageLogo" fitHeight="150.0" fitWidth="200.0" layoutX="124.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/Logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="171.0" layoutY="276.0" onMouseClicked="#loadProfilePage" text="Profile" textFill="WHITE">
+         <font>
+            <Font name="Century" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="154.0" layoutY="332.0" onMouseClicked="#loadPublishPage" text="New Post" textFill="WHITE">
+         <font>
+            <Font name="Century" size="25.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#loadTimelinePage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/cross.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>

@@ -21,7 +21,7 @@
       </Text>
       <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#loadMenuPage" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../resources/menu.png" />
+            <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/menu.png" />
          </image>
       </ImageView>
    </children>
