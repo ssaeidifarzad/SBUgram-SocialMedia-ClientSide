@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+   <Button fx:id="loginButton" layoutX="155.0" layoutY="436.0" mnemonicParsing="false" onAction="#login" prefHeight="35.0" prefWidth="110.0" text="Login">
+      <font>
+         <Font name="Century" size="15.0" />
+      </font></Button>
+   <PasswordField fx:id="passwordField" layoutX="132.0" layoutY="340.0" prefHeight="25.0" prefWidth="156.0" promptText="Password" />
+   <TextField fx:id="usernameField" layoutX="132.0" layoutY="298.0" prefHeight="25.0" prefWidth="156.0" promptText="Username" />
+   <Label fx:id="wrongUserLabel" alignment="CENTER" contentDisplay="TOP" layoutX="145.0" layoutY="378.0" prefHeight="17.0" prefWidth="110.0" text="No such a user" textFill="RED" visible="false" />
+   <Label fx:id="wrongPasswordLabel" alignment="CENTER" contentDisplay="TOP" layoutX="145.0" layoutY="395.0" prefHeight="17.0" prefWidth="110.0" text="Wrong password" textFill="RED" visible="false" />
+   <CheckBox fx:id="showPasswordCheckbox" layoutX="299.0" layoutY="344.0" mnemonicParsing="false" onAction="#showPassword" text="Show password" textAlignment="CENTER" textFill="WHITE">
+      <effect>
+         <ColorAdjust />
+      </effect>
+      <font>
+         <Font name="Bell MT" size="13.0" />
+      </font></CheckBox>
+   <Button fx:id="signupButton" layoutX="155.0" layoutY="483.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Sign up">
+      <font>
+         <Font name="Century" size="15.0" />
+      </font></Button>
+   <ImageView fx:id="loginPageLogo" fitHeight="150.0" fitWidth="200.0" layoutX="124.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/Logo.png" />
+   </ImageView>
+   <TextField fx:id="visiblePasswordField" layoutX="132.0" layoutY="340.0" prefHeight="25.0" prefWidth="156.0" promptText="Password" visible="false" />
+</Pane>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="645.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TimeLineController">
+   <children>
+      <Text fill="WHITE" layoutX="41.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
+         <font>
+            <Font name="Century" size="15.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="151.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Line">
+         <font>
+            <Font name="Century" size="25.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#loadMenuPage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../resources/menu.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
