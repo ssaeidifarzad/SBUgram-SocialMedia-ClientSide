@@ -16,11 +16,17 @@
       <font>
          <Font name="Century" size="15.0" />
       </font></Button>
-   <PasswordField fx:id="passwordField" layoutX="132.0" layoutY="340.0" prefHeight="25.0" prefWidth="156.0" promptText="Password" />
+   <PasswordField fx:id="passwordField" layoutX="132.0" layoutY="353.0" prefHeight="25.0" prefWidth="156.0" promptText="Password" />
    <TextField fx:id="usernameField" layoutX="132.0" layoutY="298.0" prefHeight="25.0" prefWidth="156.0" promptText="Username" />
-   <Label fx:id="wrongUserLabel" alignment="CENTER" contentDisplay="TOP" layoutX="145.0" layoutY="378.0" prefHeight="17.0" prefWidth="110.0" text="No such a user" textFill="RED" visible="false" />
-   <Label fx:id="wrongPasswordLabel" alignment="CENTER" contentDisplay="TOP" layoutX="145.0" layoutY="395.0" prefHeight="17.0" prefWidth="110.0" text="Wrong password" textFill="RED" visible="false" />
-   <CheckBox fx:id="showPasswordCheckbox" layoutX="299.0" layoutY="344.0" mnemonicParsing="false" onAction="#showPassword" text="Show password" textAlignment="CENTER" textFill="WHITE">
+   <Label fx:id="wrongUserLabel" alignment="CENTER" contentDisplay="TOP" layoutX="155.0" layoutY="323.0" prefHeight="17.0" prefWidth="110.0" text="No such a user" textFill="RED" visible="false">
+      <font>
+         <Font name="Century" size="14.0" />
+      </font></Label>
+   <Label fx:id="wrongPasswordLabel" alignment="CENTER" contentDisplay="TOP" layoutX="155.0" layoutY="378.0" prefHeight="17.0" prefWidth="110.0" text="Wrong password" textFill="RED" visible="false">
+      <font>
+         <Font name="Century" size="14.0" />
+      </font></Label>
+   <CheckBox fx:id="showPasswordCheckbox" layoutX="299.0" layoutY="357.0" mnemonicParsing="false" onAction="#showPassword" text="Show password" textAlignment="CENTER" textFill="WHITE">
       <effect>
          <ColorAdjust />
       </effect>

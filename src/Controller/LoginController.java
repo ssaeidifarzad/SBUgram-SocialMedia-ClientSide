@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Main;
 import Model.PageLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

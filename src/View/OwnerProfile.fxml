@@ -9,30 +9,35 @@
 
 <AnchorPane prefHeight="645.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OwnerProfileController">
     <children>
-        <ImageView fx:id="profilePhoto" fitHeight="110.0" fitWidth="110.0" layoutX="33.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="profilePhoto" fitHeight="110.0" fitWidth="110.0" layoutX="56.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../resources/user.png" />
+                <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/user.png" />
             </image>
         </ImageView>
-        <Text fx:id="ownerUsername" fill="WHITE" layoutX="182.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName">
+        <Text fx:id="ownerUsername" fill="WHITE" layoutX="205.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName">
             <font>
                 <Font name="Century" size="20.0" />
             </font>
         </Text>
-        <Text fx:id="ownerName" fill="WHITE" layoutX="182.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+        <Text fx:id="ownerName" fill="WHITE" layoutX="205.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
             <font>
                 <Font name="Century" size="20.0" />
             </font>
         </Text>
-        <Text fx:id="ownerBirthDate" fill="WHITE" layoutX="182.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BirthDate">
+        <Text fx:id="ownerBirthDate" fill="WHITE" layoutX="205.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BirthDate">
             <font>
                 <Font name="Century" size="20.0" />
             </font>
         </Text>
-      <Button fx:id="editProfileButton" layoutX="48.0" layoutY="165.0" mnemonicParsing="false" onAction="#loadEditProfilePage" style="-fx-background-color: #bbbbbb;" text="Edit Profile">
+      <Button fx:id="editProfileButton" layoutX="71.0" layoutY="170.0" mnemonicParsing="false" onAction="#loadEditProfilePage" style="-fx-background-color: #bbbbbb;" text="Edit Profile">
          <font>
             <Font name="Century" size="12.0" />
          </font>
       </Button>
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#loadMenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/cross.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane prefHeight="645.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TimeLineController">
    <children>
@@ -14,7 +14,7 @@
             <Font name="Century" size="15.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="151.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Line">
+      <Text fill="WHITE" layoutX="159.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Timeline">
          <font>
             <Font name="Century" size="25.0" />
          </font>
@@ -24,5 +24,6 @@
             <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/menu.png" />
          </image>
       </ImageView>
+      <ListView fx:id="postList" layoutY="90.0" prefHeight="555.0" prefWidth="420.0" style="-fx-background-color: #1e1e32; -fx-text-fill: #ffffff;" />
    </children>
 </AnchorPane>
