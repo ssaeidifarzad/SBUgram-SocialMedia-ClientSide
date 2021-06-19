@@ -1,5 +1,6 @@
 package Model;
 
+import Model.Messages.ClientMessages.ExitMessage;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -10,7 +11,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         PageLoader.initStage(primaryStage);
         new PageLoader().load("Login");
-//        Connection.init();
+        Connection.init();
     }
 
 
@@ -20,6 +21,7 @@ public class Main extends Application {
 
     @Override
     public void stop() {
-
+        Connection.sendMessage(new ExitMessage());
+        Connection.disconnect();
     }
 }

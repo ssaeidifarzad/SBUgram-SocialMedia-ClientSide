@@ -1,11 +1,13 @@
 package Controller;
 
-import Model.Post;
+
+import Model.DataTypes.Post.Post;
 import javafx.scene.control.ListCell;
 
 import java.io.IOException;
 
 public class PostItem extends ListCell<Post> {
+
 
     @Override
     public void updateItem(Post post, boolean empty) {
@@ -14,8 +16,7 @@ public class PostItem extends ListCell<Post> {
             try {
                 setGraphic(new PostItemController(post).init());
             } catch (IOException e) {
-                System.out.println("x");
-                System.out.println(e.getMessage());
+                e.printStackTrace();
             }
         }
     }

@@ -1,60 +1,39 @@
 package Controller;
 
+import Model.DataTypes.Post.Post;
 import Model.PageLoader;
-import Model.Post;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 
 public class PostItemController {
-    public TextField postDescription;
-    public ImageView userProfilePhoto;
-    public Text usernameText;
-    public Text postTitle;
-    public Text postDataAndTime;
-    public Button likeButton;
-    public Button repostButton;
-    public Button addCommentButton;
-    public Button viewCommentsButton;
-    public Text likeCountText;
-    public Text repostCountText;
-    public AnchorPane root;
+
+
+    public Label username;
+    public Label title;
+    @FXML
+    AnchorPane root;
     Post post;
 
+    //each list item will have its exclusive controller in runtime so we set the controller as we load the fxml
     public PostItemController(Post post) throws IOException {
-        new PageLoader().load("postItem",this);
+        new PageLoader().load("postItem", this);
         this.post = post;
     }
 
+    //this anchor pane is returned to be set as the list view item
     public AnchorPane init() {
-        postTitle.setText(post.getTitle());
-        postDescription.setText(post.getDescription());
         return root;
     }
 
-    public void loadUserProfile(MouseEvent mouseEvent) {
+    //you can show post's detail in new page with this method
+    public void detail(ActionEvent actionEvent) {
 
     }
-
-    public void loadTimelinePage(MouseEvent mouseEvent) {
-    }
-
-    public void likePost(ActionEvent actionEvent) {
-    }
-
-    public void repost(ActionEvent actionEvent) {
-    }
-
-    public void loadCommentAddPage(ActionEvent actionEvent) {
-    }
-
-    public void viewComments(ActionEvent actionEvent) {
-    }
+    /*
+    you can also add on mouse click for like and repost image
+     */
 }

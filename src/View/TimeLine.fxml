@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="645.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TimeLineController">
-   <children>
-      <Text fill="WHITE" layoutX="41.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
-         <font>
-            <Font name="Century" size="15.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="159.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Timeline">
-         <font>
-            <Font name="Century" size="25.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#loadMenuPage" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/menu.png" />
-         </image>
-      </ImageView>
-      <ListView fx:id="postList" layoutY="90.0" prefHeight="555.0" prefWidth="420.0" style="-fx-background-color: #1e1e32; -fx-text-fill: #ffffff;" />
-   </children>
-</AnchorPane>
+<SplitPane dividerPositions="0.10910786447000309" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="645.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TimeLineController">
+  <items>
+    <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="186.0" prefWidth="418.0" style="-fx-background-color: #1e1e32;">
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#loadMenuPage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/menu.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="41.0" layoutY="9.0" text="Menu" textFill="WHITE">
+               <font>
+                  <Font name="Century" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="147.0" layoutY="28.0" text="Timeline" textFill="WHITE">
+               <font>
+                  <Font name="Century" size="30.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <AnchorPane prefHeight="570.0" prefWidth="418.0">
+         <children>
+            <ListView fx:id="postList" layoutY="-1.0" prefHeight="571.0" prefWidth="418.0" style="-fx-background-color: #1e1e32;" />
+         </children>
+      </AnchorPane>
+  </items>
+</SplitPane>

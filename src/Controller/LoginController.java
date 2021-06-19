@@ -1,7 +1,12 @@
 package Controller;
 
-import Model.Main;
+import Model.Messages.ClientMessages.LoginRequest;
+import Model.Connection;
+
+
 import Model.PageLoader;
+import Model.Messages.ServerMessages.LoginResponse;
+import Model.ThisUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -24,7 +29,23 @@ public class LoginController {
 
     public void login(ActionEvent actionEvent) {
         try {
-            new PageLoader().load("TimeLine");
+            wrongUserLabel.setVisible(false);
+            wrongPasswordLabel.setVisible(false);
+            String pass;
+            if (showPasswordCheckbox.isSelected()) {
+                pass = visiblePasswordField.getText();
+            } else {
+                pass = passwordField.getText();
+            }
+            Connection.sendMessage(new LoginRequest(
+                    usernameField.getText(),
+                    pass
+            ));
+            LoginResponse lr = (LoginResponse) Connection.receiveMessage();
+            if (checkLogin(lr)) {
+                ThisUser.init(lr.getUser());
+                new PageLoader().load("TimeLine");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -46,5 +67,17 @@ public class LoginController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean checkLogin(LoginResponse lr) {
+        if (lr.getResponses().size() == 1 && lr.getResponses().get(0).equals("success"))
+            return true;
+        for (String r : lr.getResponses()) {
+            switch (r) {
+                case "wrong_password" -> wrongPasswordLabel.setVisible(true);
+                case "no_username" -> wrongUserLabel.setVisible(true);
+            }
+        }
+        return false;
     }
 }

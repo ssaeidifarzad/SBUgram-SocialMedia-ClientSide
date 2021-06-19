@@ -1,10 +1,10 @@
 package Controller;
 
+import Model.DataTypes.Post.Post;
 import Model.PageLoader;
-import Model.Post;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -14,13 +14,16 @@ public class TimeLineController {
 
 
     public ListView<Post> postList;
-    private final ArrayList<Post> posts = new ArrayList<>();
+
+    ArrayList<Post> posts = new ArrayList<>();
 
     @FXML
     public void initialize() {
-
-        posts.add(new Post("post1", "description1"));
-
+        //initialize posts array list to be shown in list view
+        for (int i = 1; i <= 5; i++) {
+            Post p = new Post();
+            posts.add(p);
+        }
 
         //show the post array in list view
         postList.setItems(FXCollections.observableArrayList(posts));
@@ -36,5 +39,4 @@ public class TimeLineController {
             e.printStackTrace();
         }
     }
-
 }
