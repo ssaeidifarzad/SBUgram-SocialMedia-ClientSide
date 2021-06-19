@@ -1,5 +1,7 @@
 package Controller;
 
+import Model.Connection;
+import Model.Messages.ClientMessages.LogoutRequest;
 import Model.PageLoader;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
@@ -7,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 
 public class MenuController {
-    
+
 
     public void loadTimelinePage(MouseEvent mouseEvent) {
         try {
@@ -34,6 +36,11 @@ public class MenuController {
     }
 
     public void logout(ActionEvent actionEvent) {
-
+        Connection.sendMessage(new LogoutRequest());
+        try {
+            new PageLoader().load("Login");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -44,5 +44,10 @@
                 <MenuItem mnemonicParsing="false" onAction="#setGenderOther" text="Other" />
             </items>
         </MenuButton>
+      <Label fx:id="WrongPasswordFormatLabel" layoutX="139.0" layoutY="424.0" text="Wrong password format" textFill="RED" visible="false">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
