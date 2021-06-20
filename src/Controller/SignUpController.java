@@ -59,7 +59,7 @@ public class SignUpController {
         UsernameUnavailableLabel.setVisible(false);
         WrongPasswordLabel.setVisible(false);
         WrongDateFormatLabel.setVisible(false);
-        SignupRequest signupRequest = new SignupRequest(
+        Connection.sendMessage(new SignupRequest(
                 UsernameField.getText(),
                 PasswordField.getText(),
                 FirstNameField.getText(),
@@ -67,8 +67,7 @@ public class SignUpController {
                 BirthDateField.getText(),
                 getGender(),
                 hasPhoto
-        );
-        Connection.sendMessage(signupRequest);
+        ));
         if (hasPhoto) {
             Connection.sendImage(photo, photoFormat);
         }

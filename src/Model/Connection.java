@@ -2,9 +2,8 @@ package Model;
 
 
 import Model.Messages.ClientMessages.ClientMessage;
-import Model.Messages.ClientMessages.ImageMessage;
+import Model.Messages.ImageMessage;
 import Model.Messages.ServerMessages.ServerMessage;
-import javafx.scene.image.Image;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -19,9 +18,9 @@ public class Connection {
         return socket;
     }
 
-    private static Socket socket = null;
-    private static ObjectOutputStream objectOutputStream = null;
-    private static ObjectInputStream objectInputStream = null;
+    private static Socket socket;
+    private static ObjectOutputStream objectOutputStream;
+    private static ObjectInputStream objectInputStream;
 
     public static void init() {
         try {
@@ -57,10 +56,20 @@ public class Connection {
             BufferedImage image = ImageIO.read(photo);
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             ImageIO.write(image, format, byteArrayOutputStream);
-            sendMessage(new ImageMessage(byteArrayOutputStream.toByteArray(),format));
+            objectOutputStream.writeObject(new ImageMessage(byteArrayOutputStream.toByteArray(), format));
+            objectOutputStream.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static ImageMessage receiveImage() {
+        try {
+            return ((ImageMessage) objectInputStream.readObject());
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static void disconnect() {
