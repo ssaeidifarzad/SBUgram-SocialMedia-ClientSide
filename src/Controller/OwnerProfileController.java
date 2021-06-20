@@ -31,20 +31,6 @@ public class OwnerProfileController {
     @FXML
     public void initialize() {
         if (ThisUser.getThisUser().hasPhoto()) {
-            if (!Files.exists(Paths.get("src/Model/Temp/image." + ThisUser.getThisUser().getPhotoFormat()))) {
-                Connection.sendMessage(new ImageRequest());
-                ImageMessage image = Connection.receiveImage();
-                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                byteArrayOutputStream.writeBytes(image.getData());
-                try (FileOutputStream fileOutputStream = new FileOutputStream("src/Model/Temp/image." + image.getFormat())) {
-                    byteArrayOutputStream.writeTo(fileOutputStream);
-                    byteArrayOutputStream.close();
-                    ThisUser.getThisUser().setHasPhoto(true);
-                    ThisUser.getThisUser().setPhotoFormat(image.getFormat());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
             profilePhoto.setImage(new Image(
                     new File("src/Model/Temp/image." + ThisUser.getThisUser().getPhotoFormat())
                             .toURI().toString()));

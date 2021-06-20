@@ -2,9 +2,8 @@ package Controller;
 
 import Model.Connection;
 import Model.DataTypes.User.Gender;
-import Model.Messages.ClientMessages.EditProfileRequst;
+import Model.Messages.ClientMessages.EditProfileRequest;
 import Model.Messages.ServerMessages.EditProfileResponse;
-import Model.Messages.ServerMessages.SignupResponse;
 import Model.PageLoader;
 import Model.ThisUser;
 import javafx.event.ActionEvent;
@@ -70,7 +69,7 @@ public class EditProfileController {
     public void confirmEdit(ActionEvent actionEvent) {
         WrongPasswordFormatLabel.setVisible(false);
         WrongDateFormatLabel.setVisible(false);
-        Connection.sendMessage(new EditProfileRequst(
+        Connection.sendMessage(new EditProfileRequest(
                 PasswordField.getText(),
                 FirstNameField.getText(),
                 LastNameField.getText(),
