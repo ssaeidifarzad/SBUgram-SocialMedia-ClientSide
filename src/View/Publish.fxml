@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane prefHeight="645.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PublishController">
    <children>
@@ -16,26 +16,31 @@
             <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/cross.png" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="187.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" textAlignment="CENTER" wrappingWidth="44.79999542236328">
+      <Text fill="WHITE" layoutX="187.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" textAlignment="CENTER" wrappingWidth="44.79999542236328">
          <font>
             <Font name="Century" size="17.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="162.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" textAlignment="CENTER" wrappingWidth="94.40003967285156">
+      <Text fill="WHITE" layoutX="162.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" textAlignment="CENTER" wrappingWidth="94.40003967285156">
          <font>
             <Font name="Century" size="17.0" />
          </font>
       </Text>
-      <TextField fx:id="postTitle" layoutX="85.0" layoutY="127.0" prefHeight="26.0" prefWidth="249.0" />
-      <TextField fx:id="postDescription" alignment="TOP_LEFT" layoutX="53.0" layoutY="225.0" prefHeight="162.0" prefWidth="314.0" style="-fx-background-color: #1e1edd; -fx-text-fill: #ffffff;">
+      <TextField fx:id="postTitle" layoutX="85.0" layoutY="75.0" prefHeight="26.0" prefWidth="249.0" />
+      <TextField fx:id="postDescription" alignment="TOP_LEFT" layoutX="53.0" layoutY="141.0" prefHeight="162.0" prefWidth="314.0" style="-fx-background-color: #1e1edd; -fx-text-fill: #ffffff;">
          <font>
             <Font name="Lucida Console" size="17.0" />
          </font>
       </TextField>
-      <Button layoutX="163.0" layoutY="517.0" mnemonicParsing="false" onAction="#publishPost" style="-fx-background-color: #bbbbbb;" text="Publish" textAlignment="CENTER">
+      <Button layoutX="163.0" layoutY="531.0" mnemonicParsing="false" onAction="#publishPost" style="-fx-background-color: #bbbbbb;" text="Publish" textAlignment="CENTER">
          <font>
             <Font name="Bell MT Bold" size="20.0" />
          </font>
       </Button>
+      <Label fx:id="publishedLabel" layoutX="152.0" layoutY="580.0" prefHeight="30.0" prefWidth="116.0" text="Published!" textFill="#06ff00" visible="false">
+         <font>
+            <Font name="Serif Regular" size="27.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -14,7 +14,6 @@ import java.nio.file.Paths;
 
 public class ThisUser {
     private static User thisUser;
-    private static byte[] profilePhotoData;
 
     private ThisUser() {
 
@@ -22,7 +21,6 @@ public class ThisUser {
 
     public static void init(User user) {
         ThisUser.thisUser = user;
-        System.out.println("init " + thisUser.hasPhoto());
         if (thisUser.hasPhoto()) {
             if (!Files.exists(Paths.get("src/Model/Temp/image." + ThisUser.getThisUser().getPhotoFormat()))) {
                 Connection.sendMessage(new ImageRequest());
@@ -45,11 +43,4 @@ public class ThisUser {
         return thisUser;
     }
 
-    public static byte[] getProfilePhotoData() {
-        return profilePhotoData;
-    }
-
-    public static void setProfilePhotoData(byte[] profilePhotoData) {
-        ThisUser.profilePhotoData = profilePhotoData;
-    }
 }

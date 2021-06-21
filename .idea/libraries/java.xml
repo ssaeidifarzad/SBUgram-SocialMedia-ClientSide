@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="java">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Downloads/Compressed/JFoenix-master.zip!/JFoenix-master/demo/src/main/java" />
+      <root url="jar://$USER_HOME$/Downloads/Compressed/JFoenix-master.zip!/JFoenix-master/jfoenix/src/main/java" />
+    </SOURCES>
+  </library>
+</component>

@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class ImageMessage implements Serializable {
     public static final long serialVersionUID = 1237896L;
-    private final byte[] data;
-    private final String format;
+    private byte[] data;
+    private String format;
 
     public ImageMessage(byte[] data, String format) {
         this.data = data;

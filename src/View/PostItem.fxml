@@ -30,28 +30,32 @@
             <Font name="Lucida Console" size="15.0" />
          </font>
       </TextField>
-      <Button layoutX="11.0" layoutY="184.0" mnemonicParsing="false" onAction="#like" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #bbbbbb;" text="Like" textFill="#b41010">
+      <Button fx:id="like" layoutX="11.0" layoutY="184.0" mnemonicParsing="false" onAction="#likePost" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #bbbbbb;" text="Like" textFill="#b41010">
          <font>
             <Font name="Bell MT Bold" size="13.0" />
-         </font></Button>
+         </font>
+      </Button>
       <Button fx:id="viewComments" alignment="CENTER" layoutX="287.0" layoutY="184.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #bbbbbb;" text="View&#10;Comments" textAlignment="CENTER">
          <font>
             <Font name="Bell MT Bold" size="13.0" />
-         </font></Button>
+         </font>
+      </Button>
       <Button fx:id="comment" layoutX="195.0" layoutY="184.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #bbbbbb;" text="Comment" textFill="#2209c1">
          <font>
             <Font name="Bell MT Bold" size="13.0" />
-         </font></Button>
+         </font>
+      </Button>
       <Button fx:id="repost" layoutX="103.0" layoutY="184.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #bbbbbb;" text="Repost" textFill="#0ea609">
          <font>
             <Font name="Bell MT Bold" size="13.0" />
-         </font></Button>
-      <Label layoutX="20.0" layoutY="241.0" text="Likes: " textFill="WHITE">
+         </font>
+      </Button>
+      <Label fx:id="likeCount" layoutX="20.0" layoutY="241.0" text="Likes: " textFill="WHITE">
          <font>
             <Font name="Bell MT" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="202.0" layoutY="241.0" text="Reposts: " textFill="WHITE">
+      <Label fx:id="repostCount" layoutX="202.0" layoutY="241.0" text="Reposts: " textFill="WHITE">
          <font>
             <Font name="Bell MT" size="15.0" />
          </font>

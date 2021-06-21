@@ -43,7 +43,6 @@ public class LoginController {
             ));
             LoginResponse lr = (LoginResponse) Connection.receiveMessage();
             if (checkLogin(lr)) {
-                System.out.println(lr.getUser().hasPhoto());
                 ThisUser.init(lr.getUser());
                 new PageLoader().load("Menu");
             }
