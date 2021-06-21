@@ -43,4 +43,12 @@ public class MenuController {
             e.printStackTrace();
         }
     }
+
+    public void loadSearchPage(ActionEvent actionEvent) {
+        try {
+            new PageLoader().load("Search");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

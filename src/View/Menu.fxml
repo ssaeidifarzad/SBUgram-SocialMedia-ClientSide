@@ -33,5 +33,10 @@
             <Font name="Century" size="20.0" />
          </font>
       </Button>
+      <Button layoutX="152.0" layoutY="371.0" mnemonicParsing="false" onAction="#loadSearchPage" style="-fx-background-color: #1e1e32;" text="Search" textFill="WHITE">
+         <font>
+            <Font name="Century" size="25.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
