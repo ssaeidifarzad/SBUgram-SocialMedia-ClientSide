@@ -3,7 +3,9 @@ package Model.DataTypes.User;
 import Model.DataTypes.Post.Posts;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class User implements Serializable {
     public static final long serialVersionUID = 500000L;
@@ -15,16 +17,18 @@ public class User implements Serializable {
     private Gender gender;
     private boolean hasPhoto;
     private String photoFormat;
+    private int lastPostIndex = 0;
+    private Map<Integer, Posts> posts = new ConcurrentHashMap<>();
+    private Map<String, User> followers = new ConcurrentHashMap<>();
+    private Map<String, User> followings = new ConcurrentHashMap<>();
 
-    private ArrayList<Posts> posts = new ArrayList<>();
-    private ArrayList<User> followers = new ArrayList<>();
-    private ArrayList<User> followings = new ArrayList<>();
-
-    public User(String username, String password, String firstName, String lastName, String birthDate, Gender gender, boolean hasPhoto, ArrayList<Posts> posts, ArrayList<User> followers, ArrayList<User> followings) {
+    public User(String username, String password, String firstName, String lastName, String birthDate, Gender gender, boolean hasPhoto, Map<Integer, Posts> posts,
+                Map<String, User> followers, Map<String, User> followings, int lastPostIndex) {
         this(username, password, firstName, lastName, birthDate, gender, hasPhoto);
         this.posts = posts;
         this.followers = followers;
         this.followings = followings;
+        this.lastPostIndex = lastPostIndex;
     }
 
     public User(String username, String password, String firstName, String lastName, String birthDate, Gender gender, boolean hasPhoto) {
@@ -90,26 +94,28 @@ public class User implements Serializable {
     }
 
     public void addPost(Posts post) {
-        posts.add(post);
+        post.setIndex(lastPostIndex);
+        posts.put(lastPostIndex, post);
+        lastPostIndex++;
     }
 
     public void addFollower(User user) {
-        followers.add(user);
+        followers.put(user.getUsername(), user);
     }
 
     public void addFollowing(User user) {
-        followings.add(user);
+        followings.put(user.getUsername(), user);
     }
 
-    public ArrayList<Posts> getPosts() {
+    public Map<Integer, Posts> getPosts() {
         return posts;
     }
 
-    public ArrayList<User> getFollowers() {
+    public Map<String, User> getFollowers() {
         return followers;
     }
 
-    public ArrayList<User> getFollowings() {
+    public Map<String, User> getFollowings() {
         return followings;
     }
 
@@ -119,5 +125,23 @@ public class User implements Serializable {
 
     public void setPhotoFormat(String photoFormat) {
         this.photoFormat = photoFormat;
+    }
+
+
+    public int getLastPostIndex() {
+        return lastPostIndex;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return hasPhoto == user.hasPhoto && getLastPostIndex() == user.getLastPostIndex() && getUsername().equals(user.getUsername()) && getPassword().equals(user.getPassword()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getBirthDate(), user.getBirthDate()) && getGender() == user.getGender() && Objects.equals(getPhotoFormat(), user.getPhotoFormat());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUsername(), getPassword(), getFirstName(), getLastName(), getBirthDate(), getGender(), hasPhoto, getPhotoFormat(), getLastPostIndex());
     }
 }

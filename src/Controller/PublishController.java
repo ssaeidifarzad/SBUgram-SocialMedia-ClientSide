@@ -37,7 +37,6 @@ public class PublishController {
     public void publishPost(ActionEvent actionEvent) {
         publishedLabel.setVisible(false);
         Connection.sendMessage(new PublishRequest(new Post(
-                ThisUser.getThisUser(),
                 postTitle.getText(),
                 postDescription.getText(),
                 LocalDateTime.now().toString(),
@@ -53,9 +52,6 @@ public class PublishController {
     }
 
     private boolean checkPublish(PublishResponse publishResponse) {
-        if (publishResponse.getResponses().size() == 1 && publishResponse.getResponses().get(0).equals("success")) {
-            return true;
-        }
-        return false;
+        return publishResponse.getResponses().size() == 1 && publishResponse.getResponses().get(0).equals("success");
     }
 }

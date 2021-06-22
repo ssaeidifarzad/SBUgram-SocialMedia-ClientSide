@@ -42,22 +42,22 @@
          </image>
       </ImageView>
       <ListView fx:id="ownerPostList" layoutY="223.0" prefHeight="421.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" />
-      <Text fill="WHITE" layoutX="46.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Followers :">
+      <Text fill="WHITE" layoutX="29.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Followers :">
          <font>
             <Font name="Times New Roman" size="19.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="235.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Followings :">
+      <Text fill="WHITE" layoutX="220.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Followings :">
          <font>
             <Font name="Times New Roman" size="19.0" />
          </font>
       </Text>
-      <Label fx:id="followersCount" layoutX="140.0" layoutY="186.0" prefHeight="18.0" prefWidth="55.0" text="flwCnt" textFill="#29ae00">
+      <Label fx:id="followersCount" layoutX="123.0" layoutY="186.0" prefHeight="22.0" prefWidth="96.0" text="flwCnt" textFill="#29ae00">
          <font>
             <Font name="Times New Roman" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="followingsCount" layoutX="339.0" layoutY="186.0" prefHeight="18.0" prefWidth="55.0" text="flwCnt" textFill="#29ae00">
+      <Label fx:id="followingsCount" layoutX="324.0" layoutY="186.0" prefHeight="22.0" prefWidth="96.0" text="flwCnt" textFill="#29ae00">
          <font>
             <Font name="Times New Roman" size="19.0" />
          </font>

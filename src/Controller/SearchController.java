@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Connection;
+import Model.DataTypes.User.SafeUserData;
 import Model.Messages.ClientMessages.SearchRequest;
 import Model.Messages.ImageMessage;
 import Model.Messages.ServerMessages.SearchResponse;
@@ -19,6 +20,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 public class SearchController {
     public TextField searchedUsername;
@@ -29,6 +31,7 @@ public class SearchController {
     public Label userFound;
     public Label noSuchAUser;
     public Pane pane;
+    private SafeUserData user;
 
     public void initialize() {
 
@@ -43,6 +46,8 @@ public class SearchController {
     }
 
     public void search(ActionEvent actionEvent) {
+        if (searchedUsername.getText().equals(ThisUser.getThisUser().getUsername()))
+            return;
         userFound.setVisible(false);
         noSuchAUser.setVisible(false);
         pane.setVisible(false);
@@ -53,7 +58,8 @@ public class SearchController {
             otherUserUsername.setText(searchResponse.getSafeUserData().getUsername());
             otherUserName.setText(searchResponse.getSafeUserData().getFirstName() + " " + searchResponse.getSafeUserData().getLastName());
             otherUserBirthDate.setText(searchResponse.getSafeUserData().getBirthDate());
-            if (searchResponse.getSafeUserData().isHasPhoto()) {
+            this.user = searchResponse.getSafeUserData();
+            if (searchResponse.getSafeUserData().hasPhoto()) {
                 setImage(searchResponse.getSafeUserData().getUsername());
             }
             pane.setVisible(true);
@@ -63,6 +69,11 @@ public class SearchController {
     }
 
     public void loadOtherUserProfile(MouseEvent mouseEvent) {
+        try {
+            new PageLoader().loadPage("OtherProfile", new OtherProfileController(user));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private boolean checkSearch(SearchResponse searchResponse) {
@@ -80,8 +91,8 @@ public class SearchController {
             e.printStackTrace();
         }
         otherUserProfilePhoto.setImage(new Image(
-                new File("src/Model/Temp/" + username + "_profilePhoto." + image.getFormat()).
-                        toURI().toString()));
+                Paths.get("src/Model/Temp/" + username + "_profilePhoto." + image.getFormat()).
+                        toUri().toString()));
     }
 }
 

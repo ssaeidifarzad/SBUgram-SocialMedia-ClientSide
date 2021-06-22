@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class SearchResponse implements ServerMessage {
     public static final long serialVersionUID = 75678478961L;
     private ArrayList<String> responses = new ArrayList<>();
+
     private SafeUserData safeUserData;
 
     public void addResponse(String response) {

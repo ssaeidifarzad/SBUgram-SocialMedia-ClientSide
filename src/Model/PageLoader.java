@@ -1,6 +1,5 @@
 package Model;
 
-import Controller.TimeLineController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -30,30 +29,30 @@ public class PageLoader {
         stage.getIcons().add(new Image(Paths.get("G:/Classes/S2/AP/Project/SBUgram/resources/Logo.png").toUri().toString()));
     }
 
-    public void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    public static Stage getPrimaryStage() {
-        return stage;
-    }
 
     public Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/View/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
-    //load fxmls with already set controllers
+
     public void load(String url) throws IOException {
         scene = new Scene(new PageLoader().loadFXML(url));
         stage.setScene(scene);
         stage.show();
     }
 
-    //load fxmls with a special controller set in the runtime
     public void load(String fxml, Object controller) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/View/" + fxml + ".fxml"));
         fxmlLoader.setController(controller);
         fxmlLoader.load();
+    }
+
+    public void loadPage(String fxml, Object controller) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/View/" + fxml + ".fxml"));
+        fxmlLoader.setController(controller);
+        scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.show();
     }
 }

@@ -1,10 +1,6 @@
 package Controller;
 
-import Model.Connection;
 import Model.DataTypes.Post.Posts;
-import Model.DataTypes.User.User;
-import Model.Messages.ClientMessages.ImageRequest;
-import Model.Messages.ImageMessage;
 import Model.PageLoader;
 import Model.ThisUser;
 import javafx.collections.FXCollections;
@@ -18,14 +14,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Vector;
 
 public class OwnerProfileController {
     public ImageView profilePhoto;
@@ -41,16 +34,14 @@ public class OwnerProfileController {
     public void initialize() {
         if (ThisUser.getThisUser().hasPhoto()) {
             profilePhoto.setImage(new Image(
-                    new File("src/Model/Temp/image." + ThisUser.getThisUser().getPhotoFormat())
-                            .toURI().toString()));
+                    Paths.get("src/Model/Temp/image." + ThisUser.getThisUser().getPhotoFormat()).toUri().toString()));
         }
         ownerUsername.setText(ThisUser.getThisUser().getUsername());
         ownerName.setText(ThisUser.getThisUser().getFirstName() + " " + ThisUser.getThisUser().getLastName());
         ownerBirthDate.setText(ThisUser.getThisUser().getBirthDate());
         followersCount.setText(String.valueOf(ThisUser.getThisUser().getFollowers().size()));
         followingsCount.setText(String.valueOf(ThisUser.getThisUser().getFollowings().size()));
-        ArrayList<Posts> posts = ThisUser.getThisUser().getPosts();
-        Collections.reverse(posts);
+        Vector<Posts> posts = new Vector<>(ThisUser.getThisUser().getPosts().values());
         ownerPostList.setItems(FXCollections.observableArrayList(posts));
         ownerPostList.setCellFactory(p -> new OwnerPostItem());
     }

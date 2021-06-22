@@ -26,8 +26,8 @@ public class OwnerPostItemController {
     public AnchorPane init() {
         title.setText(post.getTitle());
         description.setText(post.getDescription());
-        likeCount.setText(String.valueOf(post.getLikes().size()));
-        repostCount.setText(String.valueOf(post.getReposts().size()));
+        likeCount.setText(String.valueOf(post.getLikes()));
+        repostCount.setText(String.valueOf(post.getReposts()));
         return root;
     }
 

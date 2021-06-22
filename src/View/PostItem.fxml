@@ -8,54 +8,64 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="272.0" prefWidth="382.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" prefHeight="272.0" prefWidth="400.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="username" layoutX="69.0" layoutY="7.0" text="username" textFill="WHITE">
+      <Label fx:id="username" layoutX="80.0" layoutY="10.0" text="username" textFill="WHITE">
          <font>
             <Font name="Century" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="title" layoutX="169.0" layoutY="35.0" text="Title" textFill="WHITE">
+      <Label fx:id="title" layoutX="180.0" layoutY="38.0" text="Title" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Century" size="19.0" />
          </font>
       </Label>
-      <ImageView fx:id="profileImage" fitHeight="55.0" fitWidth="55.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="profileImage" fitHeight="55.0" fitWidth="55.0" layoutX="25.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/user.png" />
          </image>
       </ImageView>
-      <TextField fx:id="description" alignment="TOP_LEFT" editable="false" layoutX="14.0" layoutY="69.0" prefHeight="102.0" prefWidth="352.0" promptText="desc" style="-fx-text-fill: #ffffff; -fx-background-color: #1e1e77;">
+      <TextField fx:id="description" alignment="TOP_LEFT" editable="false" layoutX="25.0" layoutY="72.0" prefHeight="102.0" prefWidth="352.0" promptText="desc" style="-fx-text-fill: #ffffff; -fx-background-color: #1e1e77;">
          <font>
             <Font name="Lucida Console" size="15.0" />
          </font>
       </TextField>
-      <Button fx:id="like" layoutX="11.0" layoutY="184.0" mnemonicParsing="false" onAction="#likePost" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #bbbbbb;" text="Like" textFill="#b41010">
+      <Button fx:id="likeButton" layoutX="22.0" layoutY="187.0" mnemonicParsing="false" onAction="#likePost" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #bbbbbb;" text="Like" textFill="#b41010">
          <font>
             <Font name="Bell MT Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="viewComments" alignment="CENTER" layoutX="287.0" layoutY="184.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #bbbbbb;" text="View&#10;Comments" textAlignment="CENTER">
+      <Button fx:id="viewComments" alignment="CENTER" layoutX="298.0" layoutY="187.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #bbbbbb;" text="View&#10;Comments" textAlignment="CENTER">
          <font>
             <Font name="Bell MT Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="comment" layoutX="195.0" layoutY="184.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #bbbbbb;" text="Comment" textFill="#2209c1">
+      <Button fx:id="comment" layoutX="206.0" layoutY="187.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #bbbbbb;" text="Comment" textFill="#2209c1">
          <font>
             <Font name="Bell MT Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="repost" layoutX="103.0" layoutY="184.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #bbbbbb;" text="Repost" textFill="#0ea609">
+      <Button fx:id="repostButton" layoutX="114.0" layoutY="187.0" mnemonicParsing="false" onAction="#repost" prefHeight="45.0" prefWidth="80.0" style="-fx-background-color: #bbbbbb;" text="Repost" textFill="#0ea609">
          <font>
             <Font name="Bell MT Bold" size="13.0" />
          </font>
       </Button>
-      <Label fx:id="likeCount" layoutX="20.0" layoutY="241.0" text="Likes: " textFill="WHITE">
+      <Label layoutX="31.0" layoutY="244.0" text="Likes: " textFill="WHITE">
          <font>
             <Font name="Bell MT" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="repostCount" layoutX="202.0" layoutY="241.0" text="Reposts: " textFill="WHITE">
+      <Label layoutX="213.0" layoutY="244.0" text="Reposts: " textFill="WHITE">
+         <font>
+            <Font name="Bell MT" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="likeCount" layoutX="70.0" layoutY="244.0" prefHeight="18.0" prefWidth="82.0" text="likeCnt" textFill="WHITE">
+         <font>
+            <Font name="Bell MT" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="repostCount" layoutX="272.0" layoutY="244.0" prefHeight="18.0" prefWidth="82.0" text="repCnt" textFill="WHITE">
          <font>
             <Font name="Bell MT" size="15.0" />
          </font>
