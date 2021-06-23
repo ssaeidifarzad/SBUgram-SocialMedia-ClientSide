@@ -46,7 +46,7 @@ public class OtherProfileController {
     }
 
     public void initialize() {
-        if (ThisUser.getThisUser().getFollowings().containsKey(safeUser.getUsername())) {
+        if (ThisUser.getThisUser().containsFollowing(safeUser.getUsername())) {
             followButton.setVisible(false);
             unfollowButton.setVisible(true);
         }
@@ -58,7 +58,7 @@ public class OtherProfileController {
         if (safeUser.hasPhoto()) {
             setImage(safeUser);
         }
-        postList.setItems(FXCollections.observableArrayList(safeUser.getPosts().values()));
+        postList.setItems(FXCollections.observableArrayList(safeUser.getPosts()));
         postList.setCellFactory(p -> new PostItem());
     }
 

@@ -39,7 +39,7 @@ public class RepostedPostItemController {
     }
 
     public AnchorPane init() {
-        if (ThisUser.getThisUser().getPosts().containsValue(post)) {
+        if (ThisUser.getThisUser().getPosts().contains(post)) {
             repostButton.setVisible(false);
         }
         if (post.getOwner().equals(ThisUser.getThisUser())) {

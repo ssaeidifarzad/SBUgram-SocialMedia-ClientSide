@@ -1,6 +1,9 @@
 package Controller;
 
+import Model.Connection;
 import Model.DataTypes.Post.Posts;
+import Model.Messages.ClientMessages.UpdatedUserRequest;
+import Model.Messages.ServerMessages.UpdatedUserResponse;
 import Model.PageLoader;
 import Model.ThisUser;
 import javafx.collections.FXCollections;
@@ -32,6 +35,8 @@ public class OwnerProfileController {
 
     @FXML
     public void initialize() {
+        Connection.sendMessage(new UpdatedUserRequest());
+        ThisUser.init(((UpdatedUserResponse) Connection.receiveMessage()).getUser());
         if (ThisUser.getThisUser().hasPhoto()) {
             profilePhoto.setImage(new Image(
                     Paths.get("src/Model/Temp/image." + ThisUser.getThisUser().getPhotoFormat()).toUri().toString()));
@@ -41,7 +46,7 @@ public class OwnerProfileController {
         ownerBirthDate.setText(ThisUser.getThisUser().getBirthDate());
         followersCount.setText(String.valueOf(ThisUser.getThisUser().getFollowers().size()));
         followingsCount.setText(String.valueOf(ThisUser.getThisUser().getFollowings().size()));
-        Vector<Posts> posts = new Vector<>(ThisUser.getThisUser().getPosts().values());
+        Vector<Posts> posts = new Vector<>(ThisUser.getThisUser().getPosts());
         ownerPostList.setItems(FXCollections.observableArrayList(posts));
         ownerPostList.setCellFactory(p -> new OwnerPostItem());
     }
