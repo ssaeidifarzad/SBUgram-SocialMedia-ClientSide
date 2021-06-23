@@ -24,6 +24,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class OtherProfileController {
@@ -35,17 +36,17 @@ public class OtherProfileController {
     public ListView<Posts> postList;
     public Label followersCount;
     public Label followingsCount;
-    private final SafeUserData safeUser;
+    private SafeUserData safeUser;
     public ImageView otherProfilePhoto;
 
-    public OtherProfileController(SafeUserData safeUser) {
-        Connection.sendMessage(new UpdatedSafeUserRequest(safeUser.getUsername()));
+    public OtherProfileController(String safeUser) {
+        Connection.sendMessage(new UpdatedSafeUserRequest(safeUser));
         this.safeUser = ((UpdatedSafeUserResponse) Connection.receiveMessage()).getSafeUser();
-        Connection.sendMessage(new UpdatedUserRequest());
-        ThisUser.init(((UpdatedUserResponse) Connection.receiveMessage()).getUser());
     }
 
     public void initialize() {
+        Connection.sendMessage(new UpdatedUserRequest());
+        ThisUser.init(((UpdatedUserResponse) Connection.receiveMessage()).getUser());
         if (ThisUser.getThisUser().containsFollowing(safeUser.getUsername())) {
             followButton.setVisible(false);
             unfollowButton.setVisible(true);
@@ -56,7 +57,11 @@ public class OtherProfileController {
         followersCount.setText(String.valueOf(safeUser.getFollowersCount()));
         followingsCount.setText(String.valueOf(safeUser.getFollowingsCount()));
         if (safeUser.hasPhoto()) {
-            setImage(safeUser);
+            if (Files.exists(Paths.get("src/Model/Temp/" + safeUser.getUsername() + "_profilePhoto." + safeUser.getPhotoFormat()))) {
+                setImage(safeUser);
+            } else {
+
+            }
         }
         postList.setItems(FXCollections.observableArrayList(safeUser.getPosts()));
         postList.setCellFactory(p -> new PostItem());

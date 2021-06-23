@@ -17,7 +17,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -70,7 +69,7 @@ public class SearchController {
 
     public void loadOtherUserProfile(MouseEvent mouseEvent) {
         try {
-            new PageLoader().loadPage("OtherProfile", new OtherProfileController(user));
+            new PageLoader().loadPage("OtherProfile", new OtherProfileController(user.getUsername()));
         } catch (IOException e) {
             e.printStackTrace();
         }

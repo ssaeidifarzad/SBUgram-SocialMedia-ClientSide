@@ -20,7 +20,7 @@
             <Font name="Century" size="19.0" />
          </font>
       </Label>
-      <ImageView fx:id="profileImage" fitHeight="55.0" fitWidth="55.0" layoutX="25.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="profileImage" fitHeight="55.0" fitWidth="55.0" layoutX="25.0" layoutY="11.0" onMouseClicked="#loadPostOwnerProfile" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/user.png" />
          </image>

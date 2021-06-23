@@ -137,21 +137,9 @@ public class User implements Serializable {
     }
 
     public Posts getAPost(Posts post) {
-        if (post instanceof RepostedPosts) {
-            for (Posts p : posts) {
-                if (p instanceof RepostedPosts) {
-                    if (p.equals(post)) {
-                        return p;
-                    }
-                }
-            }
-        } else {
-            for (Posts p : posts) {
-                if (p instanceof Post) {
-                    if (p.equals(post)) {
-                        return p;
-                    }
-                }
+        for (Posts p : posts) {
+            if (p.equals(post)) {
+                return p;
             }
         }
         return null;

@@ -77,11 +77,11 @@ public class EditProfileController {
                 getGender(),
                 hasPhoto
         ));
-        if (hasPhoto) {
-            Connection.sendImage(photo, photoFormat);
-        }
         EditProfileResponse response = ((EditProfileResponse) Connection.receiveMessage());
         if (checkEdit(response)) {
+            if (hasPhoto) {
+                Connection.sendImage(photo, photoFormat);
+            }
             ThisUser.init(response.getUser());
             if (hasPhoto)
                 ThisUser.getThisUser().setHasPhoto(true);

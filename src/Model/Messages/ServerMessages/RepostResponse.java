@@ -4,11 +4,10 @@ import Model.DataTypes.User.User;
 
 import java.util.ArrayList;
 
-public class LikeResponse implements ServerMessage {
-    public static final long serialVersionUID = 8646416189467188498L;
-    private  User user;
+public class RepostResponse implements ServerMessage {
+    public static final long serialVersionUID = 864641651789188498L;
     private ArrayList<String> responses = new ArrayList<>();
-
+    private User user;
 
     public User getUser() {
         return user;
@@ -25,5 +24,4 @@ public class LikeResponse implements ServerMessage {
     public void addResponse(String response) {
         responses.add(response);
     }
-
 }
