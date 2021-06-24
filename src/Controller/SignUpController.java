@@ -29,6 +29,8 @@ public class SignUpController {
     public Button SignUpButton;
     public Button LoginPageLoadButton;
     public MenuButton genderMenuButton;
+    public javafx.scene.control.PasswordField repeatPasswordField;
+    public Label passwordMatchLabel;
 
     private boolean hasPhoto = false;
     private String photoFormat;
@@ -59,6 +61,11 @@ public class SignUpController {
         UsernameUnavailableLabel.setVisible(false);
         WrongPasswordLabel.setVisible(false);
         WrongDateFormatLabel.setVisible(false);
+        passwordMatchLabel.setVisible(false);
+        if (!PasswordField.getText().equals(repeatPasswordField.getText())) {
+            passwordMatchLabel.setVisible(true);
+            return;
+        }
         Connection.sendMessage(new SignupRequest(
                 UsernameField.getText(),
                 PasswordField.getText(),

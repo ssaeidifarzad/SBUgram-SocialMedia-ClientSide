@@ -28,6 +28,8 @@ public class EditProfileController {
     public Button confirmEditButton;
     public Label WrongPasswordFormatLabel;
     public ImageView ProfilePhoto;
+    public javafx.scene.control.PasswordField repeatPasswordField;
+    public Label passwordMatchLabel;
 
     private boolean hasPhoto = false;
     private String photoFormat;
@@ -69,6 +71,11 @@ public class EditProfileController {
     public void confirmEdit(ActionEvent actionEvent) {
         WrongPasswordFormatLabel.setVisible(false);
         WrongDateFormatLabel.setVisible(false);
+        passwordMatchLabel.setVisible(false);
+        if(!PasswordField.getText().equals(repeatPasswordField.getText())){
+            passwordMatchLabel.setVisible(true);
+            return;
+        }
         Connection.sendMessage(new EditProfileRequest(
                 PasswordField.getText(),
                 FirstNameField.getText(),

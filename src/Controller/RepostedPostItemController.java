@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Connection;
+import Model.DataTypes.Post.Post;
 import Model.DataTypes.Post.Posts;
 import Model.DataTypes.Post.RepostedPosts;
 import Model.DataTypes.User.SafeUserData;
@@ -19,8 +20,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
-import java.awt.event.MouseEvent;
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -32,16 +33,19 @@ public class RepostedPostItemController {
     public Label username;
     public Label title;
     public ImageView profileImage;
-    public TextField description;
+    public Text description;
     public Label likeCount;
     public Label repostCount;
     public Label repostedBy;
     public Button repostButton;
     public Button likeButton;
+    public Label dateAndTime;
     Posts post;
     public AnchorPane root;
+    private String loadingPage;
 
-    public RepostedPostItemController(Posts post) throws IOException {
+    public RepostedPostItemController(Posts post, String loadingPage) throws IOException {
+        this.loadingPage = loadingPage;
         new PageLoader().load("RepostedPost", this);
         this.post = post;
     }
@@ -67,6 +71,7 @@ public class RepostedPostItemController {
         username.setText(post.getOwner().getUsername());
         title.setText(post.getTitle());
         description.setText(post.getDescription());
+        dateAndTime.setText(post.getDateAndTime());
         likeCount.setText(String.valueOf(post.getLikes()));
         repostCount.setText(String.valueOf(post.getReposts()));
         repostedBy.setText(((RepostedPosts) post).getRepostUsername());
@@ -89,6 +94,14 @@ public class RepostedPostItemController {
             repostCount.setText(String.valueOf(post.getReposts() + 1));
         }
         ThisUser.init(repostResponse.getUser());
+    }
+
+    public void showComments(ActionEvent actionEvent) {
+        try {
+            new PageLoader().loadPage("Comments", new CommentPageController(((RepostedPosts) post).getPost(), loadingPage));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setProfileImage(Path path) {

@@ -8,6 +8,7 @@ import Model.PageLoader;
 import Model.ThisUser;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -17,7 +18,7 @@ import java.util.Date;
 
 public class PublishController {
     public TextField postTitle;
-    public TextField postDescription;
+    public TextArea postDescription;
     public Label publishedLabel;
 
     public void initialize() {

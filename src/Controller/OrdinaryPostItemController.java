@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.Connection;
-import Model.DataTypes.Post.Post;
 import Model.DataTypes.Post.Posts;
 import Model.DataTypes.User.SafeUserData;
 import Model.Messages.ClientMessages.*;
@@ -15,11 +14,13 @@ import Model.ThisUser;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
@@ -33,16 +34,18 @@ public class OrdinaryPostItemController {
     public Label username;
     public Label title;
     public ImageView profileImage;
-    public TextField description;
+    public Text description;
     public Label likeCount;
     public Label repostCount;
     public AnchorPane root;
     public Button repostButton;
     public Button likeButton;
-
+    public Label dateAndTime;
+    private String loadingPage;
     Posts post;
 
-    public OrdinaryPostItemController(Posts post) throws IOException {
+    public OrdinaryPostItemController(Posts post, String loadingPage) throws IOException {
+        this.loadingPage = loadingPage;
         new PageLoader().load("PostItem", this);
         this.post = post;
     }
@@ -68,6 +71,7 @@ public class OrdinaryPostItemController {
         username.setText(post.getOwner().getUsername());
         title.setText(post.getTitle());
         description.setText(post.getDescription());
+        dateAndTime.setText(post.getDateAndTime());
         likeCount.setText(String.valueOf(post.getLikes()));
         repostCount.setText(String.valueOf(post.getReposts()));
         return root;
@@ -89,6 +93,14 @@ public class OrdinaryPostItemController {
             repostCount.setText(String.valueOf(post.getReposts() + 1));
         }
         ThisUser.init(repostResponse.getUser());
+    }
+
+    public void showComments(ActionEvent actionEvent) {
+        try {
+            new PageLoader().loadPage("Comments", new CommentPageController(post, loadingPage));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setProfileImage(Path path) {

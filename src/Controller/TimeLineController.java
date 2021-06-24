@@ -11,7 +11,10 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
 public class TimeLineController {
 
@@ -20,9 +23,11 @@ public class TimeLineController {
     @FXML
     public void initialize() {
         Connection.sendMessage(new TimelinePostsRequest());
-        Vector<Posts> posts = ((TimelinePostsResponse) Connection.receiveMessage()).getPosts();
+        List<Posts> posts = ((TimelinePostsResponse) Connection.receiveMessage()).getPosts()
+                .stream().sorted((a, b) -> ((int) (a.getPublishTime() - b.getPublishTime())))
+                .collect(Collectors.toList());
         postList.setItems(FXCollections.observableArrayList(posts));
-        postList.setCellFactory(p -> new PostItem());
+        postList.setCellFactory(p -> new PostItem("timeline"));
     }
 
     public void loadMenuPage(MouseEvent mouseEvent) {

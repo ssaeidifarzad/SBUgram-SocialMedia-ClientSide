@@ -15,8 +15,8 @@ public class PageLoader {
     private static Stage stage;
     private static Scene scene;
 
-    public static final int WIDTH = 433;
-    public static final int HEIGHT = 682;
+    public static final int WIDTH = 464;
+    public static final int HEIGHT = 757;
 
     public static void initStage(Stage primaryStage) {
 
@@ -24,8 +24,8 @@ public class PageLoader {
         stage.setTitle("SBUgram");
         stage.setWidth(WIDTH);
         stage.setHeight(HEIGHT);
-        stage.initStyle(StageStyle.DECORATED); //the three buttons on top of stage will be shown
-        stage.setResizable(false); //the resizable button is enabled. if your design is responsive this must be true
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setResizable(false);
         stage.getIcons().add(new Image(Paths.get("G:/Classes/S2/AP/Project/SBUgram/resources/Logo.png").toUri().toString()));
     }
 

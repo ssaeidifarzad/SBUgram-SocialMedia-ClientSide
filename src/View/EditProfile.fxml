@@ -11,42 +11,48 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="645.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditProfileController">
+<AnchorPane prefHeight="720.0" prefWidth="450.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditProfileController">
     <children>
-        <ImageView fx:id="ProfilePhoto" fitHeight="90.0" fitWidth="90.0" layoutX="165.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="ProfilePhoto" fitHeight="90.0" fitWidth="90.0" layoutX="180.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/user.png" />
             </image>
         </ImageView>
-        <TextField fx:id="FirstNameField" layoutX="135.0" layoutY="213.0" promptText="First Name" />
-        <TextField fx:id="LastNameField" layoutX="134.0" layoutY="258.0" promptText="Last name" />
-        <TextField fx:id="BirthDateField" layoutX="135.0" layoutY="349.0" promptText="Birth date : YYYY/MM/DD" />
-        <PasswordField fx:id="PasswordField" layoutX="135.0" layoutY="398.0" promptText="Password (at least 8 characters and numbers)" />
-        <Button fx:id="PhotoUploadButton" layoutX="165.0" layoutY="165.0" mnemonicParsing="false" onAction="#uploadPhoto" style="-fx-background-color: #bbbbbb;" text="Upload photo">
+        <TextField fx:id="FirstNameField" layoutX="107.0" layoutY="214.0" prefHeight="26.0" prefWidth="254.0" promptText="First Name" />
+        <TextField fx:id="LastNameField" layoutX="107.0" layoutY="272.0" prefHeight="26.0" prefWidth="254.0" promptText="Last name" />
+        <TextField fx:id="BirthDateField" layoutX="107.0" layoutY="383.0" prefHeight="26.0" prefWidth="254.0" promptText="Birth date : YYYY/MM/DD" />
+        <PasswordField fx:id="PasswordField" layoutX="107.0" layoutY="437.0" prefHeight="26.0" prefWidth="254.0" promptText="Password (least length : 8)" />
+        <Button fx:id="PhotoUploadButton" layoutX="180.0" layoutY="164.0" mnemonicParsing="false" onAction="#uploadPhoto" style="-fx-background-color: #bbbbbb;" text="Upload photo">
             <font>
                 <Font name="Century" size="12.0" />
             </font>
         </Button>
-        <Label fx:id="WrongDateFormatLabel" layoutX="155.0" layoutY="375.0" text="Wrong date format" textFill="RED" visible="false">
+        <Label fx:id="WrongDateFormatLabel" layoutX="160.0" layoutY="409.0" text="Wrong date format" textFill="RED" visible="false">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="14.0" />
             </font>
         </Label>
-        <Button fx:id="confirmEditButton" layoutX="170.0" layoutY="454.0" mnemonicParsing="false" onAction="#confirmEdit" prefHeight="37.0" prefWidth="79.0" style="-fx-background-color: #bbbbbb;" text="Confirm">
+        <Button fx:id="confirmEditButton" layoutX="140.0" layoutY="589.0" mnemonicParsing="false" onAction="#confirmEdit" prefHeight="38.0" prefWidth="170.0" style="-fx-background-color: #bbbbbb;" text="Confirm">
             <font>
                 <Font name="Century" size="15.0" />
             </font>
         </Button>
-        <MenuButton fx:id="genderMenuButton" layoutX="134.0" layoutY="302.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Gender">
+        <MenuButton fx:id="genderMenuButton" layoutX="107.0" layoutY="327.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="254.0" text="Gender">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#setGenderMale" text="Male" />
                 <MenuItem mnemonicParsing="false" onAction="#setGenderFemale" text="Female" />
                 <MenuItem mnemonicParsing="false" onAction="#setGenderOther" text="Other" />
             </items>
         </MenuButton>
-      <Label fx:id="WrongPasswordFormatLabel" layoutX="139.0" layoutY="424.0" text="Wrong password format" textFill="RED" visible="false">
+      <Label fx:id="WrongPasswordFormatLabel" layoutX="144.0" layoutY="463.0" text="Wrong password format" textFill="RED" visible="false">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="repeatPasswordField" layoutX="107.0" layoutY="493.0" prefHeight="26.0" prefWidth="254.0" promptText="Repeat pasword" />
+      <Label fx:id="passwordMatchLabel" layoutX="144.0" layoutY="519.0" text="Password doesn't match" textFill="RED" visible="false">
+         <font>
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
     </children>

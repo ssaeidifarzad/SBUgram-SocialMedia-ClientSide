@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="645.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
+<AnchorPane prefHeight="720.0" prefWidth="450.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
    <children>
-      <ImageView fx:id="loginPageLogo" fitHeight="150.0" fitWidth="200.0" layoutX="123.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="loginPageLogo" fitHeight="150.0" fitWidth="200.0" layoutX="139.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/Logo.png" />
          </image>
@@ -18,22 +18,22 @@
             <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/cross.png" />
          </image>
       </ImageView>
-      <Button layoutX="154.0" layoutY="275.0" mnemonicParsing="false" onAction="#loadProfilePage" style="-fx-background-color: #1e1e32;" text="Profile" textFill="WHITE">
+      <Button layoutX="170.0" layoutY="276.0" mnemonicParsing="false" onAction="#loadProfilePage" style="-fx-background-color: #1e1e32;" text="Profile" textFill="WHITE">
          <font>
             <Font name="Century" size="25.0" />
          </font>
       </Button>
-      <Button layoutX="139.0" layoutY="323.0" mnemonicParsing="false" onAction="#loadNewPostPage" style="-fx-background-color: #1e1e32;" text="New post" textFill="WHITE">
+      <Button layoutX="155.0" layoutY="324.0" mnemonicParsing="false" onAction="#loadNewPostPage" style="-fx-background-color: #1e1e32;" text="New post" textFill="WHITE">
          <font>
             <Font name="Century" size="25.0" />
          </font>
       </Button>
-      <Button layoutX="164.0" layoutY="488.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #bbbbbb;" text="Logout">
+      <Button layoutX="180.0" layoutY="489.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #bbbbbb;" text="Logout">
          <font>
             <Font name="Century" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="152.0" layoutY="371.0" mnemonicParsing="false" onAction="#loadSearchPage" style="-fx-background-color: #1e1e32;" text="Search" textFill="WHITE">
+      <Button layoutX="168.0" layoutY="372.0" mnemonicParsing="false" onAction="#loadSearchPage" style="-fx-background-color: #1e1e32;" text="Search" textFill="WHITE">
          <font>
             <Font name="Century" size="25.0" />
          </font>

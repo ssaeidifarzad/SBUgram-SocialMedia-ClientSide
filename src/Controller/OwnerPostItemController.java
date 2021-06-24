@@ -5,17 +5,20 @@ import Model.DataTypes.Post.Posts;
 import Model.PageLoader;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
 public class OwnerPostItemController {
     public AnchorPane root;
     public Label title;
-    public TextField description;
+    public Text description;
     public Label likeCount;
     public Label repostCount;
+    public Label dateAndTime;
     Posts post;
 
     public OwnerPostItemController(Posts post) throws IOException {
@@ -26,11 +29,17 @@ public class OwnerPostItemController {
     public AnchorPane init() {
         title.setText(post.getTitle());
         description.setText(post.getDescription());
+        dateAndTime.setText(post.getDateAndTime());
         likeCount.setText(String.valueOf(post.getLikes()));
         repostCount.setText(String.valueOf(post.getReposts()));
         return root;
     }
 
-    public void viewComments(ActionEvent actionEvent) {
+    public void showComments(ActionEvent actionEvent) {
+        try {
+            new PageLoader().loadPage("Comments", new CommentPageController(post, "ownerProfile"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TimeLineController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="450.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TimeLineController">
    <children>
       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#loadMenuPage" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -20,11 +19,11 @@
             <Font name="Century" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="157.0" layoutY="38.0" text="Timeline" textFill="WHITE">
+      <Label layoutX="163.0" layoutY="38.0" text="Timeline" textFill="WHITE">
          <font>
             <Font name="Century" size="30.0" />
          </font>
       </Label>
-      <ListView fx:id="postList" layoutY="82.0" prefHeight="562.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" />
+      <ListView fx:id="postList" layoutY="82.0" prefHeight="638.0" prefWidth="450.0" style="-fx-background-color: #1e1e32;" />
    </children>
 </AnchorPane>

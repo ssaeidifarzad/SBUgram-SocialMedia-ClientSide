@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="100.0" prefWidth="334.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="profilePhoto" fitHeight="55.0" fitWidth="61.0" layoutX="18.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/user.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="commentText" alignment="TOP_LEFT" editable="false" layoutX="90.0" layoutY="7.0" prefHeight="64.0" prefWidth="232.0" style="-fx-background-color: #00fbff;">
+         <font>
+            <Font name="Georgia Italic" size="14.0" />
+         </font>
+      </TextField>
+      <Label fx:id="username" alignment="CENTER" layoutY="77.0" prefHeight="18.0" prefWidth="90.0" text="usarname" textAlignment="CENTER" textFill="WHITE" />
+      <Label fx:id="date" alignment="CENTER" layoutX="229.0" layoutY="77.0" prefHeight="18.0" prefWidth="90.0" text="Date and time" textAlignment="CENTER" textFill="WHITE" />
+   </children>
+</AnchorPane>

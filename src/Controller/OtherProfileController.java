@@ -3,10 +3,8 @@ package Controller;
 import Model.Connection;
 import Model.DataTypes.Post.Posts;
 import Model.DataTypes.User.SafeUserData;
-import Model.Messages.ClientMessages.FollowRequest;
-import Model.Messages.ClientMessages.UnfollowRequest;
-import Model.Messages.ClientMessages.UpdatedSafeUserRequest;
-import Model.Messages.ClientMessages.UpdatedUserRequest;
+import Model.Messages.ClientMessages.*;
+import Model.Messages.ImageMessage;
 import Model.Messages.ServerMessages.FollowResponse;
 import Model.Messages.ServerMessages.UnfollowResponse;
 import Model.Messages.ServerMessages.UpdatedSafeUserResponse;
@@ -23,8 +21,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class OtherProfileController {
@@ -57,14 +58,16 @@ public class OtherProfileController {
         followersCount.setText(String.valueOf(safeUser.getFollowersCount()));
         followingsCount.setText(String.valueOf(safeUser.getFollowingsCount()));
         if (safeUser.hasPhoto()) {
-            if (Files.exists(Paths.get("src/Model/Temp/" + safeUser.getUsername() + "_profilePhoto." + safeUser.getPhotoFormat()))) {
-                setImage(safeUser);
+            Path path = Paths.get("src/Model/Temp/" + safeUser.getUsername() + "_profilePhoto." + safeUser.getPhotoFormat());
+            if (Files.exists(path)) {
+                otherProfilePhoto.setImage(new Image(path.toUri().toString()));
             } else {
-
+                Connection.sendMessage(new ProfileImageRequest(safeUser.getUsername()));
+                setProfileImage(path);
             }
         }
         postList.setItems(FXCollections.observableArrayList(safeUser.getPosts()));
-        postList.setCellFactory(p -> new PostItem());
+        postList.setCellFactory(p -> new PostItem("otherProfile"));
     }
 
     public void follow(ActionEvent actionEvent) {
@@ -87,10 +90,17 @@ public class OtherProfileController {
         followersCount.setText(String.valueOf(Integer.parseInt(followersCount.getText()) - 1));
     }
 
-    private void setImage(SafeUserData user) {
-        otherProfilePhoto.setImage(new Image(
-                Paths.get("src/Model/Temp/" + user.getUsername() + "_profilePhoto." + user.getPhotoFormat()).
-                        toUri().toString()));
+    private void setProfileImage(Path path) {
+        ImageMessage image = Connection.receiveImage();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        byteArrayOutputStream.writeBytes(image.getData());
+        try (FileOutputStream fileOutputStream = new FileOutputStream(path.toString())) {
+            byteArrayOutputStream.writeTo(fileOutputStream);
+            byteArrayOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        otherProfilePhoto.setImage(new Image(path.toUri().toString()));
     }
 
 

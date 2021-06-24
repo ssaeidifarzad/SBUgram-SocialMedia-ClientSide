@@ -9,55 +9,55 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="645.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OwnerProfileController">
+<AnchorPane prefHeight="720.0" prefWidth="450.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OwnerProfileController">
     <children>
-        <ImageView fx:id="profilePhoto" fitHeight="110.0" fitWidth="110.0" layoutX="58.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="profilePhoto" fitHeight="110.0" fitWidth="110.0" layoutX="59.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/user.png" />
             </image>
         </ImageView>
-        <Text fx:id="ownerUsername" fill="WHITE" layoutX="207.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName">
+        <Text fx:id="ownerUsername" fill="WHITE" layoutX="208.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName">
             <font>
                 <Font name="Century" size="20.0" />
             </font>
         </Text>
-        <Text fx:id="ownerName" fill="WHITE" layoutX="207.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+        <Text fx:id="ownerName" fill="WHITE" layoutX="208.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
             <font>
                 <Font name="Century" size="20.0" />
             </font>
         </Text>
-        <Text fx:id="ownerBirthDate" fill="WHITE" layoutX="207.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BirthDate">
+        <Text fx:id="ownerBirthDate" fill="WHITE" layoutX="208.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BirthDate">
             <font>
                 <Font name="Century" size="20.0" />
             </font>
         </Text>
-      <Button fx:id="editProfileButton" layoutX="73.0" layoutY="142.0" mnemonicParsing="false" onAction="#loadEditProfilePage" style="-fx-background-color: #bbbbbb;" text="Edit Profile">
+      <Button fx:id="editProfileButton" layoutX="74.0" layoutY="148.0" mnemonicParsing="false" onAction="#loadEditProfilePage" style="-fx-background-color: #bbbbbb;" text="Edit Profile">
          <font>
             <Font name="Century" size="12.0" />
          </font>
       </Button>
-      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#loadMenu" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="8.0" layoutY="5.0" onMouseClicked="#loadMenu" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/cross.png" />
          </image>
       </ImageView>
-      <ListView fx:id="ownerPostList" layoutY="223.0" prefHeight="421.0" prefWidth="420.0" style="-fx-background-color: #1e1e32;" />
-      <Text fill="WHITE" layoutX="29.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Followers :">
+      <ListView fx:id="ownerPostList" layoutY="223.0" prefHeight="496.0" prefWidth="450.0" style="-fx-background-color: #1e1e32;" />
+      <Text fill="WHITE" layoutX="30.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Followers :">
          <font>
             <Font name="Times New Roman" size="19.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="220.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Followings :">
+      <Text fill="WHITE" layoutX="263.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Followings :">
          <font>
             <Font name="Times New Roman" size="19.0" />
          </font>
       </Text>
-      <Label fx:id="followersCount" layoutX="123.0" layoutY="186.0" prefHeight="22.0" prefWidth="96.0" text="flwCnt" textFill="#29ae00">
+      <Label fx:id="followersCount" layoutX="124.0" layoutY="185.0" prefHeight="22.0" prefWidth="96.0" text="flwCnt" textFill="#29ae00">
          <font>
             <Font name="Times New Roman" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="followingsCount" layoutX="324.0" layoutY="186.0" prefHeight="22.0" prefWidth="96.0" text="flwCnt" textFill="#29ae00">
+      <Label fx:id="followingsCount" layoutX="367.0" layoutY="185.0" prefHeight="22.0" prefWidth="67.0" text="flwCnt" textFill="#29ae00">
          <font>
             <Font name="Times New Roman" size="19.0" />
          </font>

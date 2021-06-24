@@ -21,7 +21,7 @@ public class OwnerPostItem extends ListCell<Posts> {
                 }
             } else if (post instanceof RepostedPosts) {
                 try {
-                    setGraphic(new RepostedPostItemController(post).init());
+                    setGraphic(new RepostedPostItemController(post, "ownerProfile").init());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
