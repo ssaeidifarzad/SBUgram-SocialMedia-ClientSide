@@ -1,12 +1,10 @@
 package Model;
 
 import Model.DataTypes.User.User;
-import Model.Messages.ClientMessages.ImageRequest;
+import Model.Messages.ClientMessages.OwnerImageRequest;
 import Model.Messages.ImageMessage;
-import javafx.scene.image.Image;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -23,17 +21,19 @@ public class ThisUser {
         ThisUser.thisUser = user;
         if (thisUser.hasPhoto()) {
             if (!Files.exists(Paths.get("src/Model/Temp/image." + ThisUser.getThisUser().getPhotoFormat()))) {
-                Connection.sendMessage(new ImageRequest());
+                Connection.sendMessage(new OwnerImageRequest());
                 ImageMessage image = Connection.receiveImage();
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                byteArrayOutputStream.writeBytes(image.getData());
-                try (FileOutputStream fileOutputStream = new FileOutputStream("src/Model/Temp/image." + image.getFormat())) {
-                    byteArrayOutputStream.writeTo(fileOutputStream);
-                    byteArrayOutputStream.close();
-                    ThisUser.getThisUser().setHasPhoto(true);
-                    ThisUser.getThisUser().setPhotoFormat(image.getFormat());
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (image != null) {
+                    byteArrayOutputStream.writeBytes(image.getData());
+                    try (FileOutputStream fileOutputStream = new FileOutputStream("src/Model/Temp/image." + image.getFormat())) {
+                        byteArrayOutputStream.writeTo(fileOutputStream);
+                        byteArrayOutputStream.close();
+                        ThisUser.getThisUser().setHasPhoto(true);
+                        ThisUser.getThisUser().setPhotoFormat(image.getFormat());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

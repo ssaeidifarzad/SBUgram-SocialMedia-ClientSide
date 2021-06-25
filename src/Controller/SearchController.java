@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.Connection;
-import Model.DataTypes.User.SafeUserData;
+import Model.DataTypes.User.SafeUser;
 import Model.Messages.ClientMessages.SearchRequest;
 import Model.Messages.ImageMessage;
 import Model.Messages.ServerMessages.SearchResponse;
@@ -30,7 +30,7 @@ public class SearchController {
     public Label userFound;
     public Label noSuchAUser;
     public Pane pane;
-    private SafeUserData user;
+    private SafeUser user;
 
     public void initialize() {
 
@@ -82,16 +82,19 @@ public class SearchController {
     private void setImage(String username) {
         ImageMessage image = Connection.receiveImage();
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        byteArrayOutputStream.writeBytes(image.getData());
-        try (FileOutputStream fileOutputStream = new FileOutputStream("src/Model/Temp/" + username + "_profilePhoto." + image.getFormat())) {
-            byteArrayOutputStream.writeTo(fileOutputStream);
-            byteArrayOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (image != null) {
+            byteArrayOutputStream.writeBytes(image.getData());
+            try (FileOutputStream fileOutputStream =
+                         new FileOutputStream("src/Model/Temp/" + username + "_profilePhoto." + image.getFormat())) {
+                byteArrayOutputStream.writeTo(fileOutputStream);
+                byteArrayOutputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            otherUserProfilePhoto.setImage(new Image(
+                    Paths.get("src/Model/Temp/" + username + "_profilePhoto." + image.getFormat()).
+                            toUri().toString()));
         }
-        otherUserProfilePhoto.setImage(new Image(
-                Paths.get("src/Model/Temp/" + username + "_profilePhoto." + image.getFormat()).
-                        toUri().toString()));
     }
 }
 

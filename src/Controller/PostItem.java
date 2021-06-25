@@ -10,7 +10,7 @@ import javafx.scene.control.ListCell;
 import java.io.IOException;
 
 public class PostItem extends ListCell<Posts> {
-    private String loadingPage;
+    private final String loadingPage;
 
     public PostItem(String loadingPage) {
         this.loadingPage = loadingPage;

@@ -1,10 +1,9 @@
 package Controller;
 
 import Model.Connection;
-import Model.DataTypes.Post.Post;
 import Model.DataTypes.Post.Posts;
 import Model.DataTypes.Post.RepostedPosts;
-import Model.DataTypes.User.SafeUserData;
+import Model.DataTypes.User.SafeUser;
 import Model.Messages.ClientMessages.*;
 import Model.Messages.ImageMessage;
 import Model.Messages.ServerMessages.LikeResponse;
@@ -16,7 +15,6 @@ import Model.ThisUser;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -42,7 +40,7 @@ public class RepostedPostItemController {
     public Label dateAndTime;
     Posts post;
     public AnchorPane root;
-    private String loadingPage;
+    private final String loadingPage;
 
     public RepostedPostItemController(Posts post, String loadingPage) throws IOException {
         this.loadingPage = loadingPage;
@@ -54,7 +52,7 @@ public class RepostedPostItemController {
         Connection.sendMessage(new UpdatedPostRequest(post));
         post = ((UpdatedPostResponse) Connection.receiveMessage()).getPost();
         Connection.sendMessage(new UpdatedSafeUserRequest(post.getOwner().getUsername()));
-        SafeUserData user = ((UpdatedSafeUserResponse) Connection.receiveMessage()).getSafeUser();
+        SafeUser user = ((UpdatedSafeUserResponse) Connection.receiveMessage()).getSafeUser();
         if (user.hasPhoto()) {
             Path path = Paths.get("src/Model/Temp/" + user.getUsername() + "_profilePhoto." + user.getPhotoFormat());
             if (Files.exists(path)) {
@@ -107,14 +105,16 @@ public class RepostedPostItemController {
     private void setProfileImage(Path path) {
         ImageMessage image = Connection.receiveImage();
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        byteArrayOutputStream.writeBytes(image.getData());
-        try (FileOutputStream fileOutputStream = new FileOutputStream(path.toString())) {
-            byteArrayOutputStream.writeTo(fileOutputStream);
-            byteArrayOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (image != null) {
+            byteArrayOutputStream.writeBytes(image.getData());
+            try (FileOutputStream fileOutputStream = new FileOutputStream(path.toString())) {
+                byteArrayOutputStream.writeTo(fileOutputStream);
+                byteArrayOutputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            profileImage.setImage(new Image(path.toUri().toString()));
         }
-        profileImage.setImage(new Image(path.toUri().toString()));
     }
 
     public void loadPostOwnerProfile(javafx.scene.input.MouseEvent mouseEvent) {

@@ -2,7 +2,7 @@ package Controller;
 
 import Model.Connection;
 import Model.DataTypes.Post.Posts;
-import Model.DataTypes.User.SafeUserData;
+import Model.DataTypes.User.SafeUser;
 import Model.Messages.ClientMessages.*;
 import Model.Messages.ImageMessage;
 import Model.Messages.ServerMessages.LikeResponse;
@@ -14,8 +14,6 @@ import Model.ThisUser;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -41,7 +39,7 @@ public class OrdinaryPostItemController {
     public Button repostButton;
     public Button likeButton;
     public Label dateAndTime;
-    private String loadingPage;
+    private final String loadingPage;
     Posts post;
 
     public OrdinaryPostItemController(Posts post, String loadingPage) throws IOException {
@@ -54,7 +52,7 @@ public class OrdinaryPostItemController {
         Connection.sendMessage(new UpdatedPostRequest(post));
         post = ((UpdatedPostResponse) Connection.receiveMessage()).getPost();
         Connection.sendMessage(new UpdatedSafeUserRequest(post.getOwner().getUsername()));
-        SafeUserData user = ((UpdatedSafeUserResponse) Connection.receiveMessage()).getSafeUser();
+        SafeUser user = ((UpdatedSafeUserResponse) Connection.receiveMessage()).getSafeUser();
         if (user.hasPhoto()) {
             Path path = Paths.get("src/Model/Temp/" + user.getUsername() + "_profilePhoto." + user.getPhotoFormat());
             if (Files.exists(path)) {
@@ -106,14 +104,16 @@ public class OrdinaryPostItemController {
     private void setProfileImage(Path path) {
         ImageMessage image = Connection.receiveImage();
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        byteArrayOutputStream.writeBytes(image.getData());
-        try (FileOutputStream fileOutputStream = new FileOutputStream(path.toString())) {
-            byteArrayOutputStream.writeTo(fileOutputStream);
-            byteArrayOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (image != null) {
+            byteArrayOutputStream.writeBytes(image.getData());
+            try (FileOutputStream fileOutputStream = new FileOutputStream(path.toString())) {
+                byteArrayOutputStream.writeTo(fileOutputStream);
+                byteArrayOutputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            profileImage.setImage(new Image(path.toUri().toString()));
         }
-        profileImage.setImage(new Image(path.toUri().toString()));
     }
 
 

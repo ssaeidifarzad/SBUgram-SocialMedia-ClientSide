@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.Connection;
-import Model.DataTypes.User.Gender;
 import Model.Messages.ClientMessages.EditProfileRequest;
 import Model.Messages.ServerMessages.EditProfileResponse;
 import Model.PageLoader;
@@ -24,7 +23,6 @@ public class EditProfileController {
     public javafx.scene.control.PasswordField PasswordField;
     public Button PhotoUploadButton;
     public Label WrongDateFormatLabel;
-    public MenuButton genderMenuButton;
     public Button confirmEditButton;
     public Label WrongPasswordFormatLabel;
     public ImageView ProfilePhoto;

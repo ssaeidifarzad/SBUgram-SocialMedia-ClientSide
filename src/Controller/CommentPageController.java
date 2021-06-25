@@ -4,13 +4,10 @@ import Model.Connection;
 import Model.DataTypes.Post.Comment;
 import Model.DataTypes.Post.Posts;
 import Model.DataTypes.Post.RepostedPosts;
-import Model.DataTypes.User.SafeUserData;
 import Model.Messages.ClientMessages.CommentRequest;
 import Model.Messages.ClientMessages.UpdatedPostRequest;
-import Model.Messages.ClientMessages.UpdatedSafeUserRequest;
 import Model.Messages.ServerMessages.CommentResponse;
 import Model.Messages.ServerMessages.UpdatedPostResponse;
-import Model.Messages.ServerMessages.UpdatedSafeUserResponse;
 import Model.PageLoader;
 import Model.ThisUser;
 import javafx.collections.FXCollections;
@@ -21,7 +18,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Vector;
 
@@ -29,8 +25,8 @@ public class CommentPageController {
     public ListView<Comment> commentList;
     public Label commentCount;
     public TextField commentField;
-    private Posts post;
-    private String previousPage;
+    private final Posts post;
+    private final String previousPage;
 
     public CommentPageController(Posts post, String previousPage) {
         Connection.sendMessage(new UpdatedPostRequest(post));

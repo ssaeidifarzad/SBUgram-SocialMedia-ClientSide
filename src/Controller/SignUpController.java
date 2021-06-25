@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.Connection;
-import Model.DataTypes.User.Gender;
 import Model.DataTypes.User.SecurityQuestions;
 import Model.Messages.ClientMessages.SignupRequest;
 import Model.Messages.ServerMessages.SignupResponse;

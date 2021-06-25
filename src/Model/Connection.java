@@ -14,10 +14,6 @@ public class Connection {
     private static final String HOST = "127.0.0.1";
     private static final int PORT = 1111;
 
-    public static Socket getSocket() {
-        return socket;
-    }
-
     private static Socket socket;
     private static ObjectOutputStream objectOutputStream;
     private static ObjectInputStream objectInputStream;

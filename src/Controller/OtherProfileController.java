@@ -2,7 +2,7 @@ package Controller;
 
 import Model.Connection;
 import Model.DataTypes.Post.Posts;
-import Model.DataTypes.User.SafeUserData;
+import Model.DataTypes.User.SafeUser;
 import Model.Messages.ClientMessages.*;
 import Model.Messages.ImageMessage;
 import Model.Messages.ServerMessages.FollowResponse;
@@ -39,7 +39,7 @@ public class OtherProfileController {
     public ListView<Posts> postList;
     public Label followersCount;
     public Label followingsCount;
-    private SafeUserData safeUser;
+    private final SafeUser safeUser;
     public ImageView otherProfilePhoto;
 
     public OtherProfileController(String safeUser) {

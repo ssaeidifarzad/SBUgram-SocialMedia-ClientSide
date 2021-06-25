@@ -2,7 +2,7 @@ package Controller;
 
 import Model.Connection;
 import Model.DataTypes.Post.Comment;
-import Model.DataTypes.User.SafeUserData;
+import Model.DataTypes.User.SafeUser;
 import Model.Messages.ClientMessages.ProfileImageRequest;
 import Model.Messages.ClientMessages.UpdatedSafeUserRequest;
 import Model.Messages.ImageMessage;
@@ -28,7 +28,7 @@ public class CommentItemController {
     public Label username;
     public Label date;
 
-    private Comment comment;
+    private final Comment comment;
 
     public CommentItemController(Comment comment) throws IOException {
         new PageLoader().load("CommentItem", this);
@@ -37,7 +37,7 @@ public class CommentItemController {
 
     public AnchorPane init() {
         Connection.sendMessage(new UpdatedSafeUserRequest(comment.getOwnerUsername()));
-        SafeUserData user = ((UpdatedSafeUserResponse) Connection.receiveMessage()).getSafeUser();
+        SafeUser user = ((UpdatedSafeUserResponse) Connection.receiveMessage()).getSafeUser();
         if (user.hasPhoto()) {
             Path path = Paths.get("src/Model/Temp/" + user.getUsername() + "_profilePhoto." + user.getPhotoFormat());
             if (Files.exists(path)) {
@@ -56,13 +56,15 @@ public class CommentItemController {
     private void setProfileImage(Path path) {
         ImageMessage image = Connection.receiveImage();
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        byteArrayOutputStream.writeBytes(image.getData());
-        try (FileOutputStream fileOutputStream = new FileOutputStream(path.toString())) {
-            byteArrayOutputStream.writeTo(fileOutputStream);
-            byteArrayOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (image != null) {
+            byteArrayOutputStream.writeBytes(image.getData());
+            try (FileOutputStream fileOutputStream = new FileOutputStream(path.toString())) {
+                byteArrayOutputStream.writeTo(fileOutputStream);
+                byteArrayOutputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            profilePhoto.setImage(new Image(path.toUri().toString()));
         }
-        profilePhoto.setImage(new Image(path.toUri().toString()));
     }
 }
