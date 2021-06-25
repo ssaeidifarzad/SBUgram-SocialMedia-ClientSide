@@ -24,6 +24,11 @@
             <Font name="Century" size="30.0" />
          </font>
       </Label>
-      <ListView fx:id="postList" layoutY="82.0" prefHeight="638.0" prefWidth="450.0" style="-fx-background-color: #1e1e32;" />
+      <ListView fx:id="postList" layoutX="6.0" layoutY="82.0" prefHeight="638.0" prefWidth="438.0" style="-fx-background-color: #1e1e32;" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="406.0" layoutY="14.0" onMouseClicked="#refresh" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/sinchronize-64.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

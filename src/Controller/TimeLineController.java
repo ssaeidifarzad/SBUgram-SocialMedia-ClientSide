@@ -11,9 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Vector;
 import java.util.stream.Collectors;
 
 public class TimeLineController {
@@ -24,7 +22,7 @@ public class TimeLineController {
     public void initialize() {
         Connection.sendMessage(new TimelinePostsRequest());
         List<Posts> posts = ((TimelinePostsResponse) Connection.receiveMessage()).getPosts()
-                .stream().sorted((a, b) -> ((int) (a.getPublishTime() - b.getPublishTime())))
+                .stream().sorted((a, b) -> ((int) (b.getPublishTime() - a.getPublishTime())))
                 .collect(Collectors.toList());
         postList.setItems(FXCollections.observableArrayList(posts));
         postList.setCellFactory(p -> new PostItem("timeline"));
@@ -33,6 +31,14 @@ public class TimeLineController {
     public void loadMenuPage(MouseEvent mouseEvent) {
         try {
             new PageLoader().load("Menu");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void refresh(MouseEvent mouseEvent) {
+        try {
+            new PageLoader().load("TimeLine");
         } catch (IOException e) {
             e.printStackTrace();
         }

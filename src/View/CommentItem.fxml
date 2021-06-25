@@ -19,7 +19,13 @@
             <Font name="Georgia Italic" size="14.0" />
          </font>
       </TextField>
-      <Label fx:id="username" alignment="CENTER" layoutY="77.0" prefHeight="18.0" prefWidth="90.0" text="usarname" textAlignment="CENTER" textFill="WHITE" />
-      <Label fx:id="date" alignment="CENTER" layoutX="229.0" layoutY="77.0" prefHeight="18.0" prefWidth="90.0" text="Date and time" textAlignment="CENTER" textFill="WHITE" />
+      <Label fx:id="username" alignment="TOP_LEFT" layoutX="8.0" layoutY="77.0" prefHeight="18.0" prefWidth="162.0" text="usarname" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Calibri" size="15.0" />
+         </font></Label>
+      <Label fx:id="date" alignment="TOP_RIGHT" layoutX="205.0" layoutY="77.0" prefHeight="18.0" prefWidth="112.0" text="2000/1/1 14:32" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font></Label>
    </children>
 </AnchorPane>

@@ -13,7 +13,7 @@
    <children>
       <Label fx:id="username" layoutX="91.0" layoutY="14.0" text="username" textFill="WHITE">
          <font>
-            <Font name="Century" size="15.0" />
+            <Font name="Calibri Bold" size="15.0" />
          </font>
       </Label>
       <Label fx:id="title" layoutX="180.0" layoutY="38.0" text="Title" textAlignment="CENTER" textFill="WHITE">
@@ -43,27 +43,27 @@
       </Button>
       <Label layoutX="31.0" layoutY="244.0" text="Likes: " textFill="WHITE">
          <font>
-            <Font name="Bell MT" size="15.0" />
+            <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
       <Label layoutX="262.0" layoutY="244.0" text="Reposts: " textFill="WHITE">
          <font>
-            <Font name="Bell MT" size="15.0" />
+            <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
       <Label fx:id="likeCount" layoutX="75.0" layoutY="244.0" prefHeight="18.0" prefWidth="82.0" text="likeCnt" textFill="WHITE">
          <font>
-            <Font name="Bell MT" size="15.0" />
+            <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
       <Label fx:id="repostCount" layoutX="321.0" layoutY="244.0" prefHeight="18.0" prefWidth="55.0" text="repCnt" textFill="WHITE">
          <font>
-            <Font name="Bell MT" size="15.0" />
+            <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="dateAndTime" layoutX="25.0" layoutY="167.0" prefHeight="18.0" prefWidth="146.0" text="Date" textFill="WHITE">
+      <Label fx:id="dateAndTime" layoutX="25.0" layoutY="167.0" prefHeight="18.0" prefWidth="146.0" text="2000/1/1 14:16" textFill="WHITE">
          <font>
-            <Font name="Bell MT" size="15.0" />
+            <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
       <Pane layoutX="20.0" layoutY="73.0" prefHeight="94.0" prefWidth="360.0" style="-fx-background-color: #1e1ebb;">

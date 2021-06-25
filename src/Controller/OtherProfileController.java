@@ -27,6 +27,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collections;
+import java.util.Vector;
 
 public class OtherProfileController {
     public Button followButton;
@@ -43,6 +45,7 @@ public class OtherProfileController {
     public OtherProfileController(String safeUser) {
         Connection.sendMessage(new UpdatedSafeUserRequest(safeUser));
         this.safeUser = ((UpdatedSafeUserResponse) Connection.receiveMessage()).getSafeUser();
+        Connection.sendMessage(new gettingOtherUserData(safeUser));
     }
 
     public void initialize() {
@@ -66,7 +69,9 @@ public class OtherProfileController {
                 setProfileImage(path);
             }
         }
-        postList.setItems(FXCollections.observableArrayList(safeUser.getPosts()));
+        Vector<Posts> posts = new Vector<>(safeUser.getPosts());
+        Collections.reverse(posts);
+        postList.setItems(FXCollections.observableArrayList(posts));
         postList.setCellFactory(p -> new PostItem("otherProfile"));
     }
 

@@ -13,7 +13,7 @@
    <children>
       <Label fx:id="username" layoutX="91.0" layoutY="9.0" text="username" textFill="WHITE">
          <font>
-            <Font name="Century" size="15.0" />
+            <Font name="Calibri Bold" size="15.0" />
          </font>
       </Label>
       <Label fx:id="title" alignment="CENTER" layoutX="91.0" layoutY="39.0" prefHeight="24.0" prefWidth="222.0" text="Title" textAlignment="CENTER" textFill="WHITE">
@@ -43,41 +43,41 @@
       </Button>
       <Label layoutX="31.0" layoutY="244.0" prefHeight="18.0" prefWidth="42.0" text="Likes: " textFill="WHITE">
          <font>
-            <Font name="Bell MT" size="15.0" />
+            <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
       <Label layoutX="262.0" layoutY="244.0" prefHeight="18.0" prefWidth="62.0" text="Reposts: " textFill="WHITE">
          <font>
-            <Font name="Bell MT" size="15.0" />
+            <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
       <Pane layoutX="247.0" layoutY="7.0" prefHeight="22.0" prefWidth="134.0" style="-fx-background-color: b90000;">
          <children>
-            <ImageView fitHeight="21.0" fitWidth="55.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="21.0" fitWidth="55.0" layoutX="-8.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/image%20(4).png" />
                </image>
             </ImageView>
-            <Label fx:id="repostedBy" layoutX="36.0" layoutY="2.0" text="RepostedBy" textFill="#2cff00">
+            <Label fx:id="repostedBy" layoutX="28.0" layoutY="2.0" prefHeight="18.0" prefWidth="100.0" text="RepostedBy" textFill="#2cff00">
                <font>
-                  <Font name="Century" size="15.0" />
+                  <Font name="Calibri Bold" size="15.0" />
                </font>
             </Label>
          </children>
       </Pane>
       <Label fx:id="likeCount" layoutX="75.0" layoutY="244.0" prefHeight="18.0" prefWidth="82.0" text="likeCnt" textFill="WHITE">
          <font>
-            <Font name="Bell MT" size="15.0" />
+            <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
       <Label fx:id="repostCount" layoutX="321.0" layoutY="244.0" prefHeight="18.0" prefWidth="55.0" text="repCnt" textFill="WHITE">
          <font>
-            <Font name="Bell MT" size="15.0" />
+            <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
       <Label fx:id="dateAndTime" layoutX="25.0" layoutY="167.0" prefHeight="18.0" prefWidth="146.0" text="Date" textFill="WHITE">
          <font>
-            <Font name="Bell MT" size="15.0" />
+            <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
       <Pane layoutX="20.0" layoutY="73.0" prefHeight="94.0" prefWidth="360.0" style="-fx-background-color: #1e1ebb;">

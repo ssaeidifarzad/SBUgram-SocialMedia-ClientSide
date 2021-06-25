@@ -16,22 +16,22 @@
       </Label>
       <Label layoutX="31.0" layoutY="207.0" text="Likes: " textFill="WHITE">
          <font>
-            <Font name="Bell MT" size="15.0" />
+            <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
       <Label layoutX="262.0" layoutY="207.0" text="Reposts: " textFill="WHITE">
          <font>
-            <Font name="Bell MT" size="15.0" />
+            <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
       <Label fx:id="likeCount" layoutX="75.0" layoutY="207.0" prefHeight="18.0" prefWidth="68.0" text="LKCNT" textFill="WHITE">
          <font>
-            <Font name="Bell MT" size="15.0" />
+            <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
       <Label fx:id="repostCount" layoutX="321.0" layoutY="207.0" prefHeight="18.0" prefWidth="56.0" text="LKCNT" textFill="WHITE">
          <font>
-            <Font name="Bell MT" size="15.0" />
+            <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
       <Button fx:id="comment" layoutX="150.0" layoutY="161.0" mnemonicParsing="false" onAction="#showComments" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #bbbbbb;" text="Comments" textFill="#2209c1">
@@ -41,7 +41,7 @@
       </Button>
       <Label fx:id="dateAndTime" layoutX="25.0" layoutY="136.0" prefHeight="18.0" prefWidth="146.0" text="Date" textFill="WHITE">
          <font>
-            <Font name="Bell MT" size="15.0" />
+            <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
       <Pane layoutX="20.0" layoutY="38.0" prefHeight="94.0" prefWidth="360.0" style="-fx-background-color: #1e1ebb;">

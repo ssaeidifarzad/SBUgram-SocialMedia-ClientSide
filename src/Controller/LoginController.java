@@ -44,7 +44,7 @@ public class LoginController {
             LoginResponse lr = (LoginResponse) Connection.receiveMessage();
             if (checkLogin(lr)) {
                 ThisUser.init(lr.getUser());
-                new PageLoader().load("Menu");
+                new PageLoader().load("TimeLine");
             }
         } catch (IOException e) {
             e.printStackTrace();
