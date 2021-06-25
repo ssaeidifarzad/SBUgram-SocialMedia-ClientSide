@@ -40,19 +40,6 @@ public class EditProfileController {
         FirstNameField.setText(ThisUser.getThisUser().getFirstName());
         LastNameField.setText(ThisUser.getThisUser().getLastName());
         BirthDateField.setText(ThisUser.getThisUser().getBirthDate());
-        genderMenuButton.setText(ThisUser.getThisUser().getGender().toString());
-    }
-
-    public void setGenderMale(ActionEvent actionEvent) {
-        genderMenuButton.setText("Male");
-    }
-
-    public void setGenderFemale(ActionEvent actionEvent) {
-        genderMenuButton.setText("Female");
-    }
-
-    public void setGenderOther(ActionEvent actionEvent) {
-        genderMenuButton.setText("Other");
     }
 
     public void uploadPhoto(ActionEvent actionEvent) {
@@ -81,7 +68,6 @@ public class EditProfileController {
                 FirstNameField.getText(),
                 LastNameField.getText(),
                 BirthDateField.getText(),
-                getGender(),
                 hasPhoto
         ));
         EditProfileResponse response = ((EditProfileResponse) Connection.receiveMessage());
@@ -114,11 +100,4 @@ public class EditProfileController {
         return false;
     }
 
-    private Gender getGender() {
-        if (genderMenuButton.getText().equals("Male"))
-            return Gender.MALE;
-        if (genderMenuButton.getText().equals("Female"))
-            return Gender.FEMALE;
-        return Gender.OTHER;
-    }
 }

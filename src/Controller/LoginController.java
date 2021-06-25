@@ -80,4 +80,12 @@ public class LoginController {
         }
         return false;
     }
+
+    public void loadPasswordRecoveryPage(ActionEvent actionEvent) {
+        try {
+            new PageLoader().load("PasswordRecovery");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Text?>
 
 <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="450.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
-   <Button fx:id="loginButton" layoutX="170.0" layoutY="453.0" mnemonicParsing="false" onAction="#login" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #bbbbbb;" text="Login">
+   <Button fx:id="loginButton" layoutX="170.0" layoutY="410.0" mnemonicParsing="false" onAction="#login" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #bbbbbb;" text="Login">
       <font>
          <Font name="Century" size="15.0" />
       </font></Button>
@@ -34,7 +34,7 @@
       <font>
          <Font name="Bell MT" size="13.0" />
       </font></CheckBox>
-   <Button fx:id="signupButton" layoutX="170.0" layoutY="541.0" mnemonicParsing="false" onAction="#loadSignupPage" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #bbbbbb;" text="Sign up">
+   <Button fx:id="signupButton" layoutX="170.0" layoutY="595.0" mnemonicParsing="false" onAction="#loadSignupPage" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #bbbbbb;" text="Sign up">
       <font>
          <Font name="Century" size="15.0" />
       </font></Button>
@@ -42,9 +42,19 @@
       <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/Logo.png" />
    </ImageView>
    <TextField fx:id="visiblePasswordField" layoutX="147.0" layoutY="357.0" prefHeight="25.0" prefWidth="156.0" promptText="Password" visible="false" />
-   <Text fill="WHITE" layoutX="126.0" layoutY="530.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account yet?">
+   <Text fill="WHITE" layoutX="126.0" layoutY="584.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account yet?">
       <font>
          <Font name="Century" size="16.0" />
       </font>
    </Text>
+   <Text fill="#00c1ff" layoutX="168.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot password?">
+      <font>
+         <Font name="Century" size="14.0" />
+      </font>
+   </Text>
+   <Button layoutX="187.0" layoutY="487.0" mnemonicParsing="false" onAction="#loadPasswordRecoveryPage" prefHeight="18.0" prefWidth="76.0" style="-fx-background-color: bbbbbb;" text="Click here">
+      <font>
+         <Font name="Century" size="12.0" />
+      </font>
+   </Button>
 </Pane>

@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Connection;
 import Model.DataTypes.User.Gender;
+import Model.DataTypes.User.SecurityQuestions;
 import Model.Messages.ClientMessages.SignupRequest;
 import Model.Messages.ServerMessages.SignupResponse;
 import Model.PageLoader;
@@ -14,6 +15,8 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class SignUpController {
     public ImageView ProfilePhoto;
@@ -28,9 +31,13 @@ public class SignUpController {
     public Label WrongPasswordLabel;
     public Button SignUpButton;
     public Button LoginPageLoadButton;
-    public MenuButton genderMenuButton;
     public javafx.scene.control.PasswordField repeatPasswordField;
     public Label passwordMatchLabel;
+    public TextField SecurityQuestion1Answer;
+    public TextField SecurityQuestion2Answer;
+    public MenuButton Q1MenuButton;
+    public MenuButton Q2MenuButton;
+    public Label sameQuestionsError;
 
     private boolean hasPhoto = false;
     private String photoFormat;
@@ -62,18 +69,26 @@ public class SignUpController {
         WrongPasswordLabel.setVisible(false);
         WrongDateFormatLabel.setVisible(false);
         passwordMatchLabel.setVisible(false);
+        sameQuestionsError.setVisible(false);
         if (!PasswordField.getText().equals(repeatPasswordField.getText())) {
             passwordMatchLabel.setVisible(true);
             return;
         }
+        if (Q1MenuButton.getText().equals(Q2MenuButton.getText())) {
+            sameQuestionsError.setVisible(true);
+            return;
+        }
+        Map<SecurityQuestions, String> securityQuestions = new TreeMap<>();
+        securityQuestions.put(getButtonQuestion(Q1MenuButton.getText()), SecurityQuestion1Answer.getText());
+        securityQuestions.put(getButtonQuestion(Q2MenuButton.getText()), SecurityQuestion2Answer.getText());
         Connection.sendMessage(new SignupRequest(
                 UsernameField.getText(),
                 PasswordField.getText(),
                 FirstNameField.getText(),
                 LastNameField.getText(),
                 BirthDateField.getText(),
-                getGender(),
-                hasPhoto
+                hasPhoto,
+                securityQuestions
         ));
         if (hasPhoto) {
             Connection.sendImage(photo, photoFormat);
@@ -87,18 +102,6 @@ public class SignUpController {
                 e.printStackTrace();
             }
         }
-    }
-
-    public void setGenderMale(ActionEvent actionEvent) {
-        genderMenuButton.setText("Male");
-    }
-
-    public void setGenderFemale(ActionEvent actionEvent) {
-        genderMenuButton.setText("Female");
-    }
-
-    public void setGenderOther(ActionEvent actionEvent) {
-        genderMenuButton.setText("Other");
     }
 
     private boolean checkSignup(SignupResponse sr) {
@@ -115,11 +118,43 @@ public class SignUpController {
         return false;
     }
 
-    private Gender getGender() {
-        if (genderMenuButton.getText().equals("Male"))
-            return Gender.MALE;
-        if (genderMenuButton.getText().equals("Female"))
-            return Gender.FEMALE;
-        return Gender.OTHER;
+    public void setQ1toQ1(ActionEvent actionEvent) {
+        Q1MenuButton.setText(SecurityQuestions.ELEMENTARY_SCHOOL_NAME.getQuestion());
+    }
+
+    public void setQ2toQ1(ActionEvent actionEvent) {
+        Q1MenuButton.setText(SecurityQuestions.CHILDHOOD_FAVORITE_GAME.getQuestion());
+    }
+
+    public void setQ3toQ1(ActionEvent actionEvent) {
+        Q1MenuButton.setText(SecurityQuestions.FAVORITE_FOOD.getQuestion());
+    }
+
+    public void setQ4toQ1(ActionEvent actionEvent) {
+        Q1MenuButton.setText(SecurityQuestions.FAVORITE_SINGER.getQuestion());
+    }
+
+    public void setQ1toQ2(ActionEvent actionEvent) {
+        Q2MenuButton.setText(SecurityQuestions.ELEMENTARY_SCHOOL_NAME.getQuestion());
+    }
+
+    public void setQ2toQ2(ActionEvent actionEvent) {
+        Q2MenuButton.setText(SecurityQuestions.CHILDHOOD_FAVORITE_GAME.getQuestion());
+    }
+
+    public void setQ3toQ2(ActionEvent actionEvent) {
+        Q2MenuButton.setText(SecurityQuestions.FAVORITE_FOOD.getQuestion());
+    }
+
+    public void setQ4toQ2(ActionEvent actionEvent) {
+        Q2MenuButton.setText(SecurityQuestions.FAVORITE_SINGER.getQuestion());
+    }
+
+    private SecurityQuestions getButtonQuestion(String s) {
+        for (SecurityQuestions sq : SecurityQuestions.values()) {
+            if (sq.getQuestion().equals(s))
+                return sq;
+        }
+        return null;
     }
 }
