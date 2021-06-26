@@ -87,9 +87,8 @@ public class EditProfileController {
     }
 
     private boolean checkEdit(EditProfileResponse response) {
-        if (response.getResponses().get(0).equals("success")) {
+        if (response.getResponses().get(0).equals("success"))
             return true;
-        }
         for (String s : response.getResponses()) {
             switch (s) {
                 case "wrong_password_format" -> WrongPasswordFormatLabel.setVisible(true);
