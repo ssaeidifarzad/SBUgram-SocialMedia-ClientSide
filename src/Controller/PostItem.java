@@ -20,25 +20,49 @@ public class PostItem extends ListCell<Posts> {
     public void updateItem(Posts post, boolean empty) {
         super.updateItem(post, empty);
         if (post != null) {
-            if (!post.getOwner().getUsername().equals(ThisUser.getThisUser().getUsername())) {
-                if (post instanceof Post) {
-                    try {
-                        setGraphic(new OrdinaryPostItemController(post, loadingPage).init());
-                    } catch (IOException e) {
-                        e.printStackTrace();
+            if (!post.hasPhoto()) {
+                if (!post.getOwner().getUsername().equals(ThisUser.getThisUser().getUsername())) {
+                    if (post instanceof Post) {
+                        try {
+                            setGraphic(new OrdinaryPostItemController(post, loadingPage).init());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } else if (post instanceof RepostedPosts) {
+                        try {
+                            setGraphic(new RepostedPostItemController(post, loadingPage).init());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
-                } else if (post instanceof RepostedPosts) {
+                } else {
                     try {
-                        setGraphic(new RepostedPostItemController(post, loadingPage).init());
+                        setGraphic(new OwnerPostItemController(post).init());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
             } else {
-                try {
-                    setGraphic(new OwnerPostItemController(post).init());
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (!post.getOwner().getUsername().equals(ThisUser.getThisUser().getUsername())) {
+                    if (post instanceof Post) {
+                        try {
+                            setGraphic(new OrdinaryPostWithImageItemController(post, loadingPage).init());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } else if (post instanceof RepostedPosts) {
+                        try {
+                            setGraphic(new RepostedPostWithImageItemController(post, loadingPage).init());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } else {
+                    try {
+                        setGraphic(new OwnerPostWithImageItemController(post).init());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

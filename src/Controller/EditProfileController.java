@@ -45,14 +45,15 @@ public class EditProfileController {
 
     public void uploadPhoto(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(
+        fileChooser.getExtensionFilters().add(
                 new FileChooser.ExtensionFilter("jpg Files", "*.jpg")
-                , new FileChooser.ExtensionFilter("png Files", "*.png")
         );
         File photo = fileChooser.showOpenDialog(new Stage());
-        ProfilePhoto.setImage(new Image(photo.toURI().toString()));
-        hasPhoto = true;
-        this.photo = ImageHandler.writeImageToArray(photo);
+        if (photo != null) {
+            ProfilePhoto.setImage(new Image(photo.toURI().toString()));
+            hasPhoto = true;
+            this.photo = ImageHandler.writeImageToArray(photo);
+        }
     }
 
     public void confirmEdit(ActionEvent actionEvent) {

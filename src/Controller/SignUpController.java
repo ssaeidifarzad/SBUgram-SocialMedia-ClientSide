@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -43,13 +44,15 @@ public class SignUpController {
 
     public void uploadPhoto(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(
+        fileChooser.getExtensionFilters().add(
                 new FileChooser.ExtensionFilter("jpg Files", "*.jpg")
         );
         File photo = fileChooser.showOpenDialog(new Stage());
-        ProfilePhoto.setImage(new Image(photo.toURI().toString()));
-        hasPhoto = true;
-        this.photo = ImageHandler.writeImageToArray(photo);
+        if (photo != null) {
+            ProfilePhoto.setImage(new Image(photo.toURI().toString()));
+            hasPhoto = true;
+            this.photo = ImageHandler.writeImageToArray(photo);
+        }
     }
 
     public void loadLoginPage(ActionEvent actionEvent) {

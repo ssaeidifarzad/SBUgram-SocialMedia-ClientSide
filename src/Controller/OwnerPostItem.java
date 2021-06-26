@@ -13,17 +13,33 @@ public class OwnerPostItem extends ListCell<Posts> {
     public void updateItem(Posts post, boolean empty) {
         super.updateItem(post, empty);
         if (post != null) {
-            if (post instanceof Post) {
-                try {
-                    setGraphic(new OwnerPostItemController(post).init());
-                } catch (IOException e) {
-                    e.printStackTrace();
+            if (!post.hasPhoto()) {
+                if (post instanceof Post) {
+                    try {
+                        setGraphic(new OwnerPostItemController(post).init());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else if (post instanceof RepostedPosts) {
+                    try {
+                        setGraphic(new RepostedPostItemController(post, "ownerProfile").init());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-            } else if (post instanceof RepostedPosts) {
-                try {
-                    setGraphic(new RepostedPostItemController(post, "ownerProfile").init());
-                } catch (IOException e) {
-                    e.printStackTrace();
+            } else {
+                if (post instanceof Post) {
+                    try {
+                        setGraphic(new OwnerPostWithImageItemController(post).init());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else if (post instanceof RepostedPosts) {
+                    try {
+                        setGraphic(new RepostedPostWithImageItemController(post, "ownerProfile").init());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

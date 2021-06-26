@@ -28,20 +28,26 @@
          </font>
       </Text>
       <TextField fx:id="postTitle" layoutX="100.0" layoutY="97.0" prefHeight="26.0" prefWidth="249.0" />
-      <Button layoutX="178.0" layoutY="553.0" mnemonicParsing="false" onAction="#publishPost" style="-fx-background-color: #bbbbbb;" text="Publish" textAlignment="CENTER">
+      <Button layoutX="179.0" layoutY="602.0" mnemonicParsing="false" onAction="#publishPost" style="-fx-background-color: #bbbbbb;" text="Publish" textAlignment="CENTER">
          <font>
             <Font name="Bell MT Bold" size="20.0" />
          </font>
       </Button>
-      <Label fx:id="publishedLabel" layoutX="167.0" layoutY="602.0" prefHeight="30.0" prefWidth="116.0" text="Published!" textFill="#06ff00" visible="false">
+      <Label fx:id="publishedLabel" layoutX="167.0" layoutY="651.0" prefHeight="30.0" prefWidth="116.0" text="Published!" textFill="#06ff00" visible="false">
          <font>
             <Font name="Serif Regular" size="27.0" />
          </font>
       </Label>
-      <TextArea fx:id="postDescription" layoutX="43.0" layoutY="160.0" prefHeight="100.0" prefWidth="362.0" style="-fx-control-inner-background: #1e1e77;" wrapText="true">
+      <TextArea fx:id="postDescription" layoutX="42.0" layoutY="158.0" prefHeight="74.0" prefWidth="362.0" style="-fx-control-inner-background: #1e1e77;" wrapText="true">
          <font>
             <Font name="Lucida Console" size="17.0" />
          </font>
       </TextArea>
+      <Button layoutX="167.0" layoutY="260.0" mnemonicParsing="false" onAction="#uploadImage" style="-fx-background-color: #bbbbbb;" text="Upload image" textAlignment="CENTER">
+         <font>
+            <Font name="Bell MT Bold" size="15.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="postImage" fitHeight="285.0" fitWidth="285.0" layoutX="81.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
