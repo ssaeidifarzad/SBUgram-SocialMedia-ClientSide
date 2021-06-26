@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class EditProfileController {
@@ -32,15 +34,16 @@ public class EditProfileController {
     public Label passwordMatchLabel;
 
     private boolean hasPhoto = false;
-    private byte[] photo;
+    private byte[] photo = new byte[0];
 
     @FXML
     public void initialize() {
         FirstNameField.setText(ThisUser.getThisUser().getFirstName());
         LastNameField.setText(ThisUser.getThisUser().getLastName());
         BirthDateField.setText(ThisUser.getThisUser().getBirthDate());
-        ProfilePhoto.setImage(new Image(Paths.get("src/Model/Temp/image.jpg").toUri().toString()));
-        this.photo = ImageHandler.writeImageToArray(new File("src/Model/Temp/image.jpg"));
+        if (Files.exists(Paths.get("src/Model/Temp/image.jpg"))) {
+            ProfilePhoto.setImage(new Image(Paths.get("src/Model/Temp/image.jpg").toUri().toString()));
+        }
     }
 
     public void uploadPhoto(ActionEvent actionEvent) {
