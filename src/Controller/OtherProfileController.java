@@ -3,6 +3,7 @@ package Controller;
 import Model.Connection;
 import Model.DataTypes.Post.Posts;
 import Model.DataTypes.User.SafeUser;
+import Model.ImageHandler;
 import Model.Messages.ClientMessages.*;
 import Model.Messages.ImageMessage;
 import Model.Messages.ServerMessages.FollowResponse;
@@ -21,8 +22,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -61,7 +60,7 @@ public class OtherProfileController {
         followersCount.setText(String.valueOf(safeUser.getFollowersCount()));
         followingsCount.setText(String.valueOf(safeUser.getFollowingsCount()));
         if (safeUser.hasPhoto()) {
-            Path path = Paths.get("src/Model/Temp/" + safeUser.getUsername() + "_profilePhoto." + safeUser.getPhotoFormat());
+            Path path = Paths.get("src/Model/Temp/" + safeUser.getUsername() + "_profilePhoto.jpg");
             if (Files.exists(path)) {
                 otherProfilePhoto.setImage(new Image(path.toUri().toString()));
             } else {
@@ -97,15 +96,10 @@ public class OtherProfileController {
 
     private void setProfileImage(Path path) {
         ImageMessage image = Connection.receiveImage();
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        byteArrayOutputStream.writeBytes(image.getData());
-        try (FileOutputStream fileOutputStream = new FileOutputStream(path.toString())) {
-            byteArrayOutputStream.writeTo(fileOutputStream);
-            byteArrayOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (image != null) {
+            ImageHandler.readImage(image.getData(), path.toString());
+            otherProfilePhoto.setImage(new Image(path.toUri().toString()));
         }
-        otherProfilePhoto.setImage(new Image(path.toUri().toString()));
     }
 
 

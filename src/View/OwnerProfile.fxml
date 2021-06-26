@@ -41,13 +41,13 @@
             <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/cross.png" />
          </image>
       </ImageView>
-      <ListView fx:id="ownerPostList" layoutY="223.0" prefHeight="496.0" prefWidth="450.0" style="-fx-background-color: #1e1e32;" />
+      <ListView fx:id="ownerPostList" layoutX="6.0" layoutY="224.0" prefHeight="496.0" prefWidth="438.0" style="-fx-background-color: #1e1e32;" />
       <Text fill="WHITE" layoutX="30.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Followers :">
          <font>
             <Font name="Times New Roman" size="19.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="263.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Followings :">
+      <Text fill="WHITE" layoutX="278.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Followings :">
          <font>
             <Font name="Times New Roman" size="19.0" />
          </font>
@@ -57,7 +57,7 @@
             <Font name="Times New Roman" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="followingsCount" layoutX="367.0" layoutY="185.0" prefHeight="22.0" prefWidth="67.0" text="flwCnt" textFill="#29ae00">
+      <Label fx:id="followingsCount" layoutX="382.0" layoutY="185.0" prefHeight="22.0" prefWidth="67.0" text="flwCnt" textFill="#29ae00">
          <font>
             <Font name="Times New Roman" size="19.0" />
          </font>

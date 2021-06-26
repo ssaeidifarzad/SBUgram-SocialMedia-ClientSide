@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Connection;
 import Model.DataTypes.User.SecurityQuestions;
+import Model.ImageHandler;
 import Model.Messages.ClientMessages.SignupRequest;
 import Model.Messages.ServerMessages.SignupResponse;
 import Model.PageLoader;
@@ -11,7 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -39,20 +39,17 @@ public class SignUpController {
     public Label sameQuestionsError;
 
     private boolean hasPhoto = false;
-    private String photoFormat;
-    private File photo;
+    private byte[] photo;
 
     public void uploadPhoto(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("jpg Files", "*.jpg")
-                , new FileChooser.ExtensionFilter("png Files", "*.png")
         );
         File photo = fileChooser.showOpenDialog(new Stage());
-        this.photo = photo;
         ProfilePhoto.setImage(new Image(photo.toURI().toString()));
         hasPhoto = true;
-        photoFormat = photo.getName().split("\\.")[1];
+        this.photo = ImageHandler.writeImageToArray(photo);
     }
 
     public void loadLoginPage(ActionEvent actionEvent) {
@@ -87,14 +84,12 @@ public class SignUpController {
                 LastNameField.getText(),
                 BirthDateField.getText(),
                 hasPhoto,
+                photo,
                 securityQuestions
         ));
-        if (hasPhoto) {
-            Connection.sendImage(photo, photoFormat);
-        }
         SignupResponse signupResponse = (SignupResponse) Connection.receiveMessage();
         if (checkSignup(signupResponse)) {
-            new Alert(Alert.AlertType.CONFIRMATION, "You are registered successfully!").showAndWait();
+            new Alert(Alert.AlertType.CONFIRMATION, "You registered successfully!").showAndWait();
             try {
                 new PageLoader().load("Login");
             } catch (IOException e) {

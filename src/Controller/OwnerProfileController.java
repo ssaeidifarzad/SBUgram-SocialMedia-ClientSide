@@ -39,8 +39,7 @@ public class OwnerProfileController {
         Connection.sendMessage(new UpdatedUserRequest());
         ThisUser.init(((UpdatedUserResponse) Connection.receiveMessage()).getUser());
         if (ThisUser.getThisUser().hasPhoto()) {
-            profilePhoto.setImage(new Image(
-                    Paths.get("src/Model/Temp/image." + ThisUser.getThisUser().getPhotoFormat()).toUri().toString()));
+            profilePhoto.setImage(new Image(Paths.get("src/Model/Temp/image.jpg").toUri().toString()));
         }
         ownerUsername.setText(ThisUser.getThisUser().getUsername());
         ownerName.setText(ThisUser.getThisUser().getFirstName() + " " + ThisUser.getThisUser().getLastName());

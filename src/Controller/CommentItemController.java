@@ -3,6 +3,7 @@ package Controller;
 import Model.Connection;
 import Model.DataTypes.Post.Comment;
 import Model.DataTypes.User.SafeUser;
+import Model.ImageHandler;
 import Model.Messages.ClientMessages.ProfileImageRequest;
 import Model.Messages.ClientMessages.UpdatedSafeUserRequest;
 import Model.Messages.ImageMessage;
@@ -14,8 +15,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -39,7 +38,7 @@ public class CommentItemController {
         Connection.sendMessage(new UpdatedSafeUserRequest(comment.getOwnerUsername()));
         SafeUser user = ((UpdatedSafeUserResponse) Connection.receiveMessage()).getSafeUser();
         if (user.hasPhoto()) {
-            Path path = Paths.get("src/Model/Temp/" + user.getUsername() + "_profilePhoto." + user.getPhotoFormat());
+            Path path = Paths.get("src/Model/Temp/" + user.getUsername() + "_profilePhoto.jpg");
             if (Files.exists(path)) {
                 profilePhoto.setImage(new Image(path.toUri().toString()));
             } else {
@@ -55,15 +54,8 @@ public class CommentItemController {
 
     private void setProfileImage(Path path) {
         ImageMessage image = Connection.receiveImage();
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         if (image != null) {
-            byteArrayOutputStream.writeBytes(image.getData());
-            try (FileOutputStream fileOutputStream = new FileOutputStream(path.toString())) {
-                byteArrayOutputStream.writeTo(fileOutputStream);
-                byteArrayOutputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            ImageHandler.readImage(image.getData(), path.toString());
             profilePhoto.setImage(new Image(path.toUri().toString()));
         }
     }

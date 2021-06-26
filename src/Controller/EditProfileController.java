@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Connection;
+import Model.ImageHandler;
 import Model.Messages.ClientMessages.EditProfileRequest;
 import Model.Messages.ServerMessages.EditProfileResponse;
 import Model.PageLoader;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 public class EditProfileController {
     public TextField FirstNameField;
@@ -30,14 +32,15 @@ public class EditProfileController {
     public Label passwordMatchLabel;
 
     private boolean hasPhoto = false;
-    private String photoFormat;
-    private File photo;
+    private byte[] photo;
 
     @FXML
     public void initialize() {
         FirstNameField.setText(ThisUser.getThisUser().getFirstName());
         LastNameField.setText(ThisUser.getThisUser().getLastName());
         BirthDateField.setText(ThisUser.getThisUser().getBirthDate());
+        ProfilePhoto.setImage(new Image(Paths.get("src/Model/Temp/image.jpg").toUri().toString()));
+        this.photo = ImageHandler.writeImageToArray(new File("src/Model/Temp/image.jpg"));
     }
 
     public void uploadPhoto(ActionEvent actionEvent) {
@@ -47,17 +50,16 @@ public class EditProfileController {
                 , new FileChooser.ExtensionFilter("png Files", "*.png")
         );
         File photo = fileChooser.showOpenDialog(new Stage());
-        this.photo = photo;
         ProfilePhoto.setImage(new Image(photo.toURI().toString()));
         hasPhoto = true;
-        photoFormat = photo.getName().split("\\.")[1];
+        this.photo = ImageHandler.writeImageToArray(photo);
     }
 
     public void confirmEdit(ActionEvent actionEvent) {
         WrongPasswordFormatLabel.setVisible(false);
         WrongDateFormatLabel.setVisible(false);
         passwordMatchLabel.setVisible(false);
-        if(!PasswordField.getText().equals(repeatPasswordField.getText())){
+        if (!PasswordField.getText().equals(repeatPasswordField.getText())) {
             passwordMatchLabel.setVisible(true);
             return;
         }
@@ -66,16 +68,11 @@ public class EditProfileController {
                 FirstNameField.getText(),
                 LastNameField.getText(),
                 BirthDateField.getText(),
-                hasPhoto
-        ));
+                hasPhoto,
+                photo));
         EditProfileResponse response = ((EditProfileResponse) Connection.receiveMessage());
         if (checkEdit(response)) {
-            if (hasPhoto) {
-                Connection.sendImage(photo, photoFormat);
-            }
             ThisUser.init(response.getUser());
-            if (hasPhoto)
-                ThisUser.getThisUser().setHasPhoto(true);
             new Alert(Alert.AlertType.CONFIRMATION, "Your profile info updated successfully").showAndWait();
             try {
                 new PageLoader().load("OwnerProfile");
@@ -86,7 +83,7 @@ public class EditProfileController {
     }
 
     private boolean checkEdit(EditProfileResponse response) {
-        if (response.getResponses().size() == 1 && response.getResponses().get(0).equals("success")) {
+        if (response.getResponses().get(0).equals("success")) {
             return true;
         }
         for (String s : response.getResponses()) {

@@ -41,13 +41,13 @@
             <Font name="Century" size="14.0" />
          </font>
       </Button>
-      <ListView fx:id="postList" layoutY="227.0" prefHeight="492.0" prefWidth="450.0" style="-fx-background-color: #1e1e32;" />
+      <ListView fx:id="postList" layoutX="6.0" layoutY="227.0" prefHeight="492.0" prefWidth="438.0" style="-fx-background-color: #1e1e32;" />
       <Text fill="WHITE" layoutX="23.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Followers :">
          <font>
             <Font name="Times New Roman" size="19.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="282.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Followings :">
+      <Text fill="WHITE" layoutX="290.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Followings :">
          <font>
             <Font name="Times New Roman" size="19.0" />
          </font>
@@ -57,7 +57,7 @@
             <Font name="Times New Roman" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="followingsCount" layoutX="386.0" layoutY="195.0" prefHeight="22.0" prefWidth="55.0" text="flwCnt" textFill="#29ae00">
+      <Label fx:id="followingsCount" layoutX="394.0" layoutY="195.0" prefHeight="22.0" prefWidth="55.0" text="flwCnt" textFill="#29ae00">
          <font>
             <Font name="Times New Roman" size="19.0" />
          </font>

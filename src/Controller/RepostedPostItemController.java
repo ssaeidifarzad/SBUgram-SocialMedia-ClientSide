@@ -4,6 +4,7 @@ import Model.Connection;
 import Model.DataTypes.Post.Posts;
 import Model.DataTypes.Post.RepostedPosts;
 import Model.DataTypes.User.SafeUser;
+import Model.ImageHandler;
 import Model.Messages.ClientMessages.*;
 import Model.Messages.ImageMessage;
 import Model.Messages.ServerMessages.LikeResponse;
@@ -19,9 +20,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -54,7 +52,7 @@ public class RepostedPostItemController {
         Connection.sendMessage(new UpdatedSafeUserRequest(post.getOwner().getUsername()));
         SafeUser user = ((UpdatedSafeUserResponse) Connection.receiveMessage()).getSafeUser();
         if (user.hasPhoto()) {
-            Path path = Paths.get("src/Model/Temp/" + user.getUsername() + "_profilePhoto." + user.getPhotoFormat());
+            Path path = Paths.get("src/Model/Temp/" + user.getUsername() + "_profilePhoto.jpg");
             if (Files.exists(path)) {
                 profileImage.setImage(new Image(path.toUri().toString()));
             } else {
@@ -104,15 +102,8 @@ public class RepostedPostItemController {
 
     private void setProfileImage(Path path) {
         ImageMessage image = Connection.receiveImage();
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         if (image != null) {
-            byteArrayOutputStream.writeBytes(image.getData());
-            try (FileOutputStream fileOutputStream = new FileOutputStream(path.toString())) {
-                byteArrayOutputStream.writeTo(fileOutputStream);
-                byteArrayOutputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            ImageHandler.readImage(image.getData(), path.toString());
             profileImage.setImage(new Image(path.toUri().toString()));
         }
     }

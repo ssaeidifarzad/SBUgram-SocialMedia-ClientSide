@@ -5,8 +5,6 @@ import Model.Messages.ClientMessages.ClientMessage;
 import Model.Messages.ImageMessage;
 import Model.Messages.ServerMessages.ServerMessage;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.Socket;
 
@@ -43,20 +41,7 @@ public class Connection {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return new ServerMessage() {
-        };
-    }
-
-    public static void sendImage(File photo, String format) {
-        try {
-            BufferedImage image = ImageIO.read(photo);
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            ImageIO.write(image, format, byteArrayOutputStream);
-            objectOutputStream.writeObject(new ImageMessage(byteArrayOutputStream.toByteArray(), format));
-            objectOutputStream.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return new ServerMessage() {};
     }
 
     public static ImageMessage receiveImage() {
@@ -65,7 +50,7 @@ public class Connection {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return null;
+        return new ImageMessage(new byte[0]);
     }
 
     public static void disconnect() {

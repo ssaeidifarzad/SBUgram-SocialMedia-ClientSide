@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Connection;
 import Model.DataTypes.User.SafeUser;
+import Model.ImageHandler;
 import Model.Messages.ClientMessages.SearchRequest;
 import Model.Messages.ImageMessage;
 import Model.Messages.ServerMessages.SearchResponse;
@@ -16,8 +17,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
 
@@ -81,21 +80,13 @@ public class SearchController {
 
     private void setImage(String username) {
         ImageMessage image = Connection.receiveImage();
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        String path = "src/Model/Temp/" + username + "_profilePhoto.jpg";
         if (image != null) {
-            byteArrayOutputStream.writeBytes(image.getData());
-            try (FileOutputStream fileOutputStream =
-                         new FileOutputStream("src/Model/Temp/" + username + "_profilePhoto." + image.getFormat())) {
-                byteArrayOutputStream.writeTo(fileOutputStream);
-                byteArrayOutputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            otherUserProfilePhoto.setImage(new Image(
-                    Paths.get("src/Model/Temp/" + username + "_profilePhoto." + image.getFormat()).
-                            toUri().toString()));
+            ImageHandler.readImage(image.getData(), path);
+            otherUserProfilePhoto.setImage(new Image(Paths.get(path).toUri().toString()));
         }
     }
+
 }
 
 
