@@ -49,7 +49,7 @@ public class OwnerProfileController {
         Vector<Posts> posts = new Vector<>(ThisUser.getThisUser().getPosts());
         Collections.reverse(posts);
         ownerPostList.setItems(FXCollections.observableArrayList(posts));
-        ownerPostList.setCellFactory(p -> new OwnerPostItem());
+        ownerPostList.setCellFactory(p -> new OwnerPostItem("ownerProfile"));
     }
 
     public void loadEditProfilePage(ActionEvent actionEvent) {

@@ -37,7 +37,7 @@ public class PostItem extends ListCell<Posts> {
                     }
                 } else {
                     try {
-                        setGraphic(new OwnerPostItemController(post).init());
+                        setGraphic(new OwnerPostItemController(post,loadingPage).init());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -59,7 +59,7 @@ public class PostItem extends ListCell<Posts> {
                     }
                 } else {
                     try {
-                        setGraphic(new OwnerPostWithImageItemController(post).init());
+                        setGraphic(new OwnerPostWithImageItemController(post, loadingPage).init());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

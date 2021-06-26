@@ -9,64 +9,64 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" prefHeight="272.0" prefWidth="400.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" prefHeight="272.0" prefWidth="425.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="username" layoutX="91.0" layoutY="14.0" prefHeight="18.0" prefWidth="146.0" text="username" textFill="WHITE">
+      <Label fx:id="username" layoutX="106.0" layoutY="13.0" prefHeight="18.0" prefWidth="146.0" text="username" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="title" alignment="CENTER" layoutX="81.0" layoutY="42.0" prefHeight="24.0" prefWidth="238.0" text="Title" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="title" alignment="CENTER" layoutX="96.0" layoutY="41.0" prefHeight="24.0" prefWidth="238.0" text="Title" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Century" size="19.0" />
          </font>
       </Label>
-      <ImageView fx:id="profileImage" fitHeight="55.0" fitWidth="55.0" layoutX="14.0" layoutY="11.0" onMouseClicked="#loadPostOwnerProfile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="profileImage" fitHeight="55.0" fitWidth="55.0" layoutX="29.0" layoutY="10.0" onMouseClicked="#loadPostOwnerProfile" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="file:/G:/Classes/S2/AP/Project/SBUgram/resources/user.png" />
          </image>
       </ImageView>
-      <Button fx:id="likeButton" layoutX="25.0" layoutY="197.0" mnemonicParsing="false" onAction="#likePost" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #bbbbbb;" text="Like" textFill="#b41010">
+      <Button fx:id="likeButton" layoutX="40.0" layoutY="196.0" mnemonicParsing="false" onAction="#likePost" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #bbbbbb;" text="Like" textFill="#b41010">
          <font>
             <Font name="Bell MT Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="comment" layoutX="277.0" layoutY="197.0" mnemonicParsing="false" onAction="#showComments" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #bbbbbb;" text="Comments" textFill="#2209c1">
+      <Button fx:id="comment" layoutX="292.0" layoutY="196.0" mnemonicParsing="false" onAction="#showComments" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #bbbbbb;" text="Comments" textFill="#2209c1">
          <font>
             <Font name="Bell MT Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="repostButton" layoutX="151.0" layoutY="197.0" mnemonicParsing="false" onAction="#repost" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #bbbbbb;" text="Repost" textFill="#0ea609">
+      <Button fx:id="repostButton" layoutX="166.0" layoutY="196.0" mnemonicParsing="false" onAction="#repost" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #bbbbbb;" text="Repost" textFill="#0ea609">
          <font>
             <Font name="Bell MT Bold" size="13.0" />
          </font>
       </Button>
-      <Label layoutX="31.0" layoutY="244.0" text="Likes: " textFill="WHITE">
+      <Label layoutX="46.0" layoutY="243.0" text="Likes: " textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="262.0" layoutY="244.0" text="Reposts: " textFill="WHITE">
+      <Label layoutX="292.0" layoutY="243.0" text="Reposts: " textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="likeCount" layoutX="75.0" layoutY="244.0" prefHeight="18.0" prefWidth="82.0" text="likeCnt" textFill="WHITE">
+      <Label fx:id="likeCount" layoutX="90.0" layoutY="243.0" prefHeight="18.0" prefWidth="82.0" text="likeCnt" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="repostCount" layoutX="321.0" layoutY="244.0" prefHeight="18.0" prefWidth="55.0" text="repCnt" textFill="WHITE">
+      <Label fx:id="repostCount" layoutX="351.0" layoutY="243.0" prefHeight="18.0" prefWidth="55.0" text="repCnt" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="dateAndTime" layoutX="25.0" layoutY="167.0" prefHeight="18.0" prefWidth="146.0" text="2000/1/1 14:16" textFill="WHITE">
+      <Label fx:id="dateAndTime" layoutX="40.0" layoutY="166.0" prefHeight="18.0" prefWidth="146.0" text="2000/1/1 14:16" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
-      <Pane layoutX="20.0" layoutY="73.0" prefHeight="94.0" prefWidth="360.0" style="-fx-background-color: #1e1ebb;">
+      <Pane layoutX="35.0" layoutY="72.0" prefHeight="94.0" prefWidth="360.0" style="-fx-background-color: #1e1ebb;">
          <children>
             <Text fx:id="description" fill="WHITE" layoutX="6.0" layoutY="18.0" lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="347.199951171875">
                <font>

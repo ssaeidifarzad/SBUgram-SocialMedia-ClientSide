@@ -1,7 +1,10 @@
 package Controller;
 
+import Model.Connection;
 import Model.DataTypes.Post.Posts;
 import Model.ImageHandler;
+import Model.Messages.ClientMessages.UpdatedPostRequest;
+import Model.Messages.ServerMessages.UpdatedPostResponse;
 import Model.PageLoader;
 import Model.ThisUser;
 import javafx.event.ActionEvent;
@@ -25,13 +28,16 @@ public class OwnerPostWithImageItemController {
     public Label dateAndTime;
     public ImageView postImage;
     Posts post;
-
-    public OwnerPostWithImageItemController(Posts post) throws IOException {
+    private final String loadingPage;
+    public OwnerPostWithImageItemController(Posts post, String loadingPage) throws IOException {
+        this.loadingPage = loadingPage;
         new PageLoader().load("OwnerPostWithImageItem", this);
         this.post = post;
     }
 
     public AnchorPane init() {
+        Connection.sendMessage(new UpdatedPostRequest(post));
+        post = ((UpdatedPostResponse) Connection.receiveMessage()).getPost();
         Path imgPath = Paths.get("src/Model/Temp/" + ThisUser.getThisUser().getUsername()
                 + "_" + post.getTitle() + post.getPublishTime() + ".jpg");
         if (Files.exists(imgPath)) {
@@ -49,7 +55,7 @@ public class OwnerPostWithImageItemController {
 
     public void showComments(ActionEvent actionEvent) {
         try {
-            new PageLoader().loadPage("Comments", new CommentPageController(post, "ownerProfile"));
+            new PageLoader().loadPage("Comments", new CommentPageController(post, loadingPage));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -7,44 +7,44 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" prefHeight="242.0" prefWidth="400.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" prefHeight="242.0" prefWidth="425.0" style="-fx-background-color: #1e1e32;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="title" alignment="CENTER" layoutX="85.0" layoutY="14.0" prefHeight="24.0" prefWidth="230.0" text="Title" textFill="WHITE">
+      <Label fx:id="title" alignment="CENTER" layoutX="98.0" layoutY="15.0" prefHeight="24.0" prefWidth="230.0" text="Title" textFill="WHITE">
          <font>
             <Font name="Century" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="31.0" layoutY="207.0" text="Likes: " textFill="WHITE">
+      <Label layoutX="44.0" layoutY="208.0" text="Likes: " textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="262.0" layoutY="207.0" text="Reposts: " textFill="WHITE">
+      <Label layoutX="286.0" layoutY="208.0" text="Reposts: " textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="likeCount" layoutX="75.0" layoutY="207.0" prefHeight="18.0" prefWidth="68.0" text="LKCNT" textFill="WHITE">
+      <Label fx:id="likeCount" layoutX="88.0" layoutY="208.0" prefHeight="18.0" prefWidth="68.0" text="LKCNT" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="repostCount" layoutX="321.0" layoutY="207.0" prefHeight="18.0" prefWidth="56.0" text="LKCNT" textFill="WHITE">
+      <Label fx:id="repostCount" layoutX="345.0" layoutY="208.0" prefHeight="18.0" prefWidth="56.0" text="LKCNT" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="comment" layoutX="150.0" layoutY="161.0" mnemonicParsing="false" onAction="#showComments" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #bbbbbb;" text="Comments" textFill="#2209c1">
+      <Button fx:id="comment" layoutX="163.0" layoutY="162.0" mnemonicParsing="false" onAction="#showComments" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #bbbbbb;" text="Comments" textFill="#2209c1">
          <font>
             <Font name="Bell MT Bold" size="13.0" />
          </font>
       </Button>
-      <Label fx:id="dateAndTime" layoutX="25.0" layoutY="136.0" prefHeight="18.0" prefWidth="146.0" text="Date" textFill="WHITE">
+      <Label fx:id="dateAndTime" layoutX="38.0" layoutY="137.0" prefHeight="18.0" prefWidth="146.0" text="Date" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="15.0" />
          </font>
       </Label>
-      <Pane layoutX="20.0" layoutY="38.0" prefHeight="94.0" prefWidth="360.0" style="-fx-background-color: #1e1ebb;">
+      <Pane layoutX="33.0" layoutY="39.0" prefHeight="94.0" prefWidth="360.0" style="-fx-background-color: #1e1ebb;">
          <children>
             <Text fx:id="description" fill="WHITE" layoutX="6.0" layoutY="18.0" lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="347.199951171875">
                <font>

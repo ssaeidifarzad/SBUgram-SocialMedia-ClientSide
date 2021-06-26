@@ -8,6 +8,11 @@ import javafx.scene.control.ListCell;
 import java.io.IOException;
 
 public class OwnerPostItem extends ListCell<Posts> {
+    private final String loadingPage;
+
+    public OwnerPostItem(String loadingPage) {
+        this.loadingPage = loadingPage;
+    }
 
     @Override
     public void updateItem(Posts post, boolean empty) {
@@ -16,7 +21,7 @@ public class OwnerPostItem extends ListCell<Posts> {
             if (!post.hasPhoto()) {
                 if (post instanceof Post) {
                     try {
-                        setGraphic(new OwnerPostItemController(post).init());
+                        setGraphic(new OwnerPostItemController(post, loadingPage).init());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -30,7 +35,7 @@ public class OwnerPostItem extends ListCell<Posts> {
             } else {
                 if (post instanceof Post) {
                     try {
-                        setGraphic(new OwnerPostWithImageItemController(post).init());
+                        setGraphic(new OwnerPostWithImageItemController(post, loadingPage).init());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
